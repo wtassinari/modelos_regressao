@@ -1,15 +1,14 @@
 ---
-title: "Disciplinas de Estatística Básica e Introdução à Bioestatística"
+title: "Modelos de regressão aplicados às ciências veterinárias"
 date: ""
-output:
-  rmdformats::readthedown:
-    highlight: kate
+output: rmdformats::material
+#  rmdformats::readthedown:
+#    highlight: kate
 ---
 
 
 ```{r setup, include=FALSE}
 library(knitr)
-library(rmdformats)
 
 ## Global options
 options(max.print="75")
