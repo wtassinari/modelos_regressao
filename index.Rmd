@@ -1,9 +1,15 @@
 ---
-title: "Modelos de regressão aplicados às ciências veterinárias"
-date: ""
-output: rmdformats::material
-#  rmdformats::readthedown:
-#    highlight: kate
+title: "Pós-graduação em Ciências Veterinárias (IV/UFRRJ)"
+subtitle: "Modelos de Regressão Aplicados às Ciências Veterinárias"
+author: |
+  | Adriana Andrade
+  |
+  | Wagner Tassinari 
+  |
+date: "2021"
+output:
+  rmdformats::readthedown:
+    highlight: kate
 ---
 
 
@@ -12,15 +18,46 @@ library(knitr)
 
 ## Global options
 options(max.print="75")
-opts_chunk$set(echo=FALSE,
+knitr::opts_chunk$set(echo=FALSE,
                cache=TRUE,
                prompt=FALSE,
                tidy=TRUE,
                comment=NA,
                message=FALSE,
-               warning=FALSE)
-opts_knit$set(width=75)
+               warning=FALSE,
+               cache.lazy=FALSE)
+knitr::opts_knit$set(width=75)
+
 ```
+
+
+```{r klippy}
+# Insert copy to clipboard buttons in HTML documents
+# remotes::install_github("rlesur/klippy")
+klippy::klippy(
+  lang = c("r", "markdown"),
+  all_precode = FALSE,
+  position = c("top", "right"),
+  color = "navyblue",
+  tooltip_message = "copiar código",
+  tooltip_success = "copiado!"
+)
+
+```
+
+
+```{css echo=FALSE}
+/* Define a margin before h2 element */
+h2  {
+  margin-top: 4em;
+}
+
+/* Define a margin after every first p elements */
+p:first-of-type {
+  margin-bottom: 2em;
+}
+``` 
+
 
 ```{r}
 ## Color Format
@@ -41,21 +78,24 @@ colFmt <- function(x,color) {
 
 ```
 
-**[Prof. Wagner Tassinari (DEMAT/UFRRJ)](https://institucional.ufrrj.br/ruralpesquisa/wagner-de-souza-tassinari/)**
-
-email: [*tassinari@ufrrj.br*](tassinari@ufrrj.br)
 
 ```{r echo=F, fig.align="center", message=FALSE, warning=FALSE, comments=NA, out.width="90%", comment=NA}
 knitr::include_graphics('rural.jpg')
 ```
 
-Esta página representa o repositório do conteúdo das disciplinas de Estatística Básica e Introdução à Bioestatística - 2021-1 (DEMAT/UFRRJ)
-
 # Informações Gerais
 
-## Objetivo das Disciplinas 
+## Objetivo da Disciplina
 
-- Introduzir os conceitos básicos de estatística dando maior ênfase às aplicações nas diversas ciências.
+Apresentar uma visão geral dos principais modelos de regressão. A
+disciplina se inicia com uma breve apresentação sobre manipulação de
+bases de dados e análise exploratória, seguida por uma introdução sobre
+modelagem estatística. Serão abordados aspectos da modelagem de
+Regressão Linear, simples e múltipla, técnicas de predição pontual e
+intervalar, bem como análise da adequação e da qualidade do modelo. A
+disciplina inclui uma introdução aos Modelos de Regressão Generalizados,
+com a apresentação dos Modelos de Regressão Logística e o Modelo
+Poisson.
 
 ## Formato das Disciplinas 
 
@@ -68,21 +108,6 @@ Esta página representa o repositório do conteúdo das disciplinas de Estatíst
 \vspace{0.3mm}
 
 - Uma das formas de utilizar a linguagem R é através da interface gráfica **RStudio** ([link](https://rstudio.com/products/rstudio/)), que é uma IDE ou ambiente de desenvolvimento integrado, para o pacote R. Com sua utilização gratuita, o RStudio é uma excelente ferramenta para trabalhar com o R. Essa plataforma é extremamente visual quando comparado com ambientes de outras linguagens e também com o console do R, e muito simples de se utilizar.
-
-\vspace{0.3mm}
-
-- Uma outra opção para trabalhar com o pacote estatístico R é a versão mobile do R: [R Programming Compiler](https://play.google.com/store/apps/details?id=com.krazeapps.rprogrammingcompiler)
-
-# Algumas Considerações
-
-### IMPORTANTE !!!!!!!!!!!! Informativo quanto aos cuidados no uso e compartilhamento do material oral e digital disponibilizado no curso. Direitos de imagem de discentes e docentes, bem como a lei de direitos autorais: Estão proibidas quaisquer outras formas de utilização, tais como copiar, editar, adicionar, reduzir, exibir, difundir publicamente, transmitir a terceiros, bem como trocar, emprestar ou praticar qualquer ato de comercialização.
-
-
-*Segundo a deliberação No 289 / 2020 - SAOC (12.28.01.03), que regulamenta as atividades de ensino nesse período em decorrência da pandemia de COVID-19:*
-
-*Art. 30. Para fins de Ensino Remoto, o direito de imagem é protegido em relação à transmissão pública, gravação e compartilhamento das atividades...*
-
-*Art. 31 § 1o - Para as atividades remotas síncronas haverá aferição de assiduidade...*
 
 
 # Programa das Disciplinas
@@ -107,57 +132,40 @@ Esta página representa o repositório do conteúdo das disciplinas de Estatíst
 
 
 
-# Avaliação das Disciplinas
+# Avaliação da Disciplina
 
-- P1 – 01/11/2021 
+- Seminário – 10/12/2021 
 
-\vspace{0.3mm}
 
-- P2 – 13/12/2021
-
-\vspace{0.3mm}
-
-- Segunda Chamada – 15/12/2021
-
-\vspace{0.3mm}
-
-- Optativa – 20/12/2021
-
-\vspace{0.3mm}
-
-- A média final será composta pela nota da primeira e da segunda avaliação.
-
-\vspace{0.3mm}
-
-- OBS1: Será aplicada apenas uma prova de segunda chamada.
-
-\vspace{0.3mm}
-
-- OBS2: A nota da prova optativa substituirá a menor nota entre as avaliações P1 e P2, sendo a média recalculada.
 
 
 # Bibliografias
 
 ## Bibliografia Básica
 
--  Wilton O. Bussab; Pedro A. Morettin. **Estatística Básica**. Editora Saraiva
-
-\vspace{0.3mm}
-
--  Sonia Vieira. **Introdução à Bioestatística**. Editora Elsevier
+-  Dohoo, I. R., Martin, W., & Stryhn, H. E. (2003). Veterinary epidemiologic research.
 
 
-## Bibliografia Sugerida
+## Bibliografia Complementar
 
-- [Diógenes Ferreira Filho. **Apostila de Estatística Básica**, UFRRJ. 2017](https://drive.google.com/file/d/1eo4CWWqZzNibXqNK4bfUxZXzqwEgufIl/view?usp=drivesdk)
+- Dobson , AJ (2001). An introduction to generalized linear models.
+Chapman & Hall/CRC.
 
-\vspace{0.3mm}
+- Faraway, J. Practical Regression and Anova using R (PDF, banco de
+dados e scripts disponível no site http://www.stat.lsa.umich.edu/faraway/book/)
 
-- [Vu, J; Harrington, D. **Introductory Statistics for the Life and Biomedical Sciences**, 1ª edição. 2020.](https://leanpub.com/biostat)
+- Fox, J (2002). An R and S-Plus Companion to Applied Regression. Sage
+Publications.
 
-\vspace{0.3mm}
+- McCullagh P, Nelder JA (1989). Generalized linear models. Second
+Edition. Chapman and Hall.
 
-- [Diez, DM; Barr, C D; Çetinkaya-Rundel M. **OpenIntro Statistics**, 3ª edição. 2015.](https://leanpub.com/openintro-statistics)
+- Myers, Raymond H. et al. (2012) Generalized linear models: with
+applications in engineering and the sciences. John Wiley & Sons.
+
+- Venables WN, Ripley, BD (2002). Moderns Applied Statistics with S.
+Fourth Edition. Springer.
+
 
 # Instalando o pacote estatístico R + sua interface gráfica RStudio
 
@@ -177,55 +185,34 @@ Esta página representa o repositório do conteúdo das disciplinas de Estatíst
 
 
 
-# Cronograma do Curso
+# Cronograma das aulas síncronos
+
+- Todos os encontros síncronos serão às sextas-feiras a partir das 9hs.
+
+|    Data    | Aula |                             Descrição                             |
+|:----------:|:----:|:-----------------------------------------------------------------:|
+| 05/11/2021 |   1  | Introdução do curso + Revisão Análise Exploratória de Dados (AED) |
+| 12/11/2021 |   2  | Modelo de Regressão Simples                                       |
+| 19/11/2021 |   3  | Modelo de Regressão Múltipla                                      |
+| 26/11/2021 |   4  | Modelo de Regressão Logística                                     |
+| 03/12/2021 |   5  | Modelo de Regressão de Poisson                                    |
+| 10/12/2021 |   6  | Apresentação dos Seminários                                       |
 
 
-<!-- |   Data    |             Descrição             | Aulas |      |   Data    |                    Descrição                     | Aulas | -->
-<!-- | :-------: | :-------------------------------: | :---: | ---- | :-------: | :----------------------------------------------: | :---: | -->
-<!-- | **01/06** |    Apresentação da  Disciplina*    |   -   |      | **20/07** |            Introdução à Probabilidade            |   8   | -->
-<!-- | **08/06** |         Conceitos Básicos         |   1   |      | **22/07** |            Introdução à Probabilidade*            |   8   | -->
-<!-- | **10/06** |         Conceitos Básicos*         |   1   |      | **27/07** |               Variáveis Aleatórias               |   9   | -->
-<!-- | **15/06** |        Tabelas e Gráficos         | 2 e 3 |      | **29/07** |               Variáveis Aleatórias*               |   9   | -->
-<!-- | **17/06** |        Tabelas e Gráficos*         | 2 e 3 |      | **03/08** | Distribuições de Probabilidade para VA discretas |  10   | -->
-<!-- | **22/06** |        Medidas de Posição         |   4   |      | **05/08** | Distribuições de Probabilidade para VA discretas* |  10   | -->
-<!-- | **24/06** |        Medidas de Posição*         |   4   |      | **10/08** | Distribuições de Probabilidade para VA contínuas |  11   | -->
-<!-- | **29/06** | Medidas de Dispersão e Assimetria | 5 e 6 |      | **12/08** | Distribuições de Probabilidade para VA contínuas* |  11   | -->
-<!-- | **01/07** | Medidas de Dispersão e Assimetria* | 5 e 6 |      | **17/08** |       Introdução à Inferência Estatística        |  12   | -->
-<!-- | **06/07** |       Análise Bidimensional       |   7   |      | **19/08** |       Introdução à Inferência Estatística*        |  12   | -->
-<!-- | **08/07** |       Análise Bidimensional*       |   7   |      | **24/08** |                     Revisão*                     |       | -->
-<!-- | **13/07** |              Revisão*              |       |      | **26/08** |                        P2                        |       | -->
-<!-- | **15/07** |                P1                 |       |      | **04/05** |                 Segunda chamada                  |       | -->
-<!-- |     -     |                 -                 |       |      | **06/05** |                     Optativa                     |       | -->
-
-
-|   Data    |             Descrição             | Aulas |      |   Data    |                    Descrição                     | Aulas |
-| :-------: | :-------------------------------: | :---: | ---- | :-------: | :----------------------------------------------: | :---: |
-| **20/09** |  `r colFmt("Apresentação da  Disciplina*",'blue')`  |   -   |      | **03/11** |  Introdução à Probabilidade  |   8   |
-| **22/09** |         Conceitos Básicos         |   1   |      | **08/11** |  `r colFmt("Introdução à Probabilidade*",'blue')`            |   8   |
-| **27/09** | `r colFmt("Conceitos Básicos*",'blue')`         |   1   |      | **10/11** |               Variáveis Aleatórias               |   9   |
-| **29/09** |        Tabelas e Gráficos         | 2 e 3 |      | **17/11** | `r colFmt("Variáveis Aleatórias*",'blue')`                           |   9   |
-| **04/10** | `r colFmt("Tabelas e Gráficos*",'blue')`         | 2 e 3 |      | **22/11** | Distribuições de Probabilidade para VA discretas |  10   |
-| **06/10** |        Medidas de Posição         |   4   |      | **24/11** | `r colFmt("Distribuições de Probabilidade para VA discretas*",'blue')` |  10   |
-| **11/10** | `r colFmt("Medidas de Posição*",'blue')`         |   4   |      | **29/11** | Distribuições de Probabilidade para VA contínuas |  11   |
-| **13/10** | Medidas de Dispersão e Assimetria | 5 e 6 |      | **01/12** | `r colFmt("Distribuições de Probabilidade para VA contínuas*",'blue')` |  11   |
-| **18/10** |`r colFmt("Medidas de Dispersão e Assimetria*",'blue')` | 5 e 6 |      | **06/12** |       Introdução à Inferência Estatística        |  12   |
-| **20/10** |       Análise Bidimensional       |   7   |      | **08/12** |  `r colFmt("Introdução à Inferência Estatística*",'blue')`                      |  12   |
-| **25/10** | `r colFmt("Análise Bidimensional*",'blue')`       |   7   |      | **13/12** |     `r colFmt("P2**",'red')`        |       |
-| **27/10** | `r colFmt("Aula de Dúvidas*",'blue')`       |   7   |      | **15/12** |     `r colFmt("Segunda chamada**",'red')`        |       |
-| **01/11** |  `r colFmt("P1**",'red')`             |       |      | **20/12** |  `r colFmt("Optativa**",'red')`                       |       |
-
-
-###### `r colFmt("  *As aulas síncronas estão escritas na cor azul marcadas com um asterístico.",'blue')`
-
-###### `r colFmt("  **As avaliações estão escritas na cor vermelha marcadas com dois asterísticos.",'red')`
-
-
-
-## **Apresentação da disciplina**
+## **Aula 1: Introdução do curso + Revisão Análise Exploratória de Dados (AED)**
 
 - Nessa aula síncrona será apresentado esse novo formato da disciplina (conteúdo e dinâmica das aulas). 
 
-## **Aula 1:** Conceitos Básicos
+- Revisão sobre o conteúdo de análise exploratória de dados.
+
+- Não está prevista atividade assíncrona para esta aula
+
+| Atividades |             Tipo de atividades            |                                            Links                                           |
+|:----------:|:-----------------------------------------:|:------------------------------------------------------------------------------------------:|
+|  Síncrona  | Atividades síncronas a respeito da Aula 1 | [link](https://drive.google.com/file/d/1eZ-BUHCMjiwHkBoNBlnJGMTG4NKgYWzy/view?usp=sharing) |
+
+
+## **Aula 2:** Modelo de regressão simples.
 
 - Nessa aula serão apresentados alguns conceitos fundamentais para se trabalhar com as principais ferramentas da análise estatística, são eles: introdução aos somatórios, cálculo do fatorial e análise combinatória. 
 
@@ -269,168 +256,9 @@ Esta página representa o repositório do conteúdo das disciplinas de Estatíst
 | Síncrona | Atividades síncronas a respeito das Aulas 2 e 3 |  [link](https://drive.google.com/file/d/1y46X6jUpqg5uk9FvsgmGz6ckulB8jcRx/view?usp=sharing)  |
 
 
-## **Aula 4:** Medidas de posição e medidas separatrizes
 
-- Para esta aula serão mostrados algumas medidas de posição (ou tendência central) + algumas medidas separatrízes. Além de apresentar como e quando aplicar cada  uma dessas medidas, é mostrado suas vantangens e desvantagens.
+# Orientações para os Seminários
 
-- Todo o conteúdo dessa aula, será abordado de forma assíncrona (videoaulas e lista de exercícios). 
+- Os seminários deverão ser feitos segundo as seguintes orientações: [link](https://www.dropbox.com/s/z0ep4bv501tiary/instru%C3%A7%C3%B5es_prova.pdf?dl=0)
 
-- Para a atividade síncrona, é sugerido que os alunos assistam as videoaulas e tentem fazer os exercícios propostos.
-
-| Atividades  |       Tipo de Atividade                                      | Links|
-| :---------: | ------------------------------------------------------------ | :---:|
-| Assíncrona | Videoaula sobre a Aula 4 - Vídeo 1  |  [link](https://drive.google.com/file/d/1t9uWQS8Q_4LeQSkur5cHbtS4FNWA68wT/view?usp=sharing)  |
-| Assíncrona | Videoaula sobre a Aula 4 - Vídeo 2 |  [link](https://drive.google.com/file/d/1OdpTUFSqsFXGTMmDzV4X5BcOLOnUAOXr/view?usp=sharing)  |
-| Assíncrona | Videoaula sobre a Aula 4 - Vídeo 3 | [link](https://drive.google.com/file/d/1hCUUAiTk3jHQBmF6oKD84ygo7zuhgHm3/view?usp=sharing)   |
-| Assíncrona | Videoaula sobre a Aula 4 - Vídeo 4 | [link](https://drive.google.com/file/d/1QSkCiidgjOhFoZVA3wJ1jd5HCYZz7R09/view?usp=sharing)   |
-| Assíncrona | Slides sobre a Aula 4 | [link](https://drive.google.com/file/d/1MN4C_O_pwFysI2eTOY-MAGLfkY0YG-K1/view?usp=sharing)   |
-| Assíncrona | Lista de exercícios sobre a Aula 4 | [link](https://drive.google.com/file/d/1qtW6AV6Q2OxQrXugMlDatLLNyohjBuNS/view?usp=sharing)  |
-| Síncrona | Atividades síncronas a respeito da Aula 4 | [link](https://drive.google.com/file/d/1urRS2jVXwdIMdtN0yQgUn1HF4C9QrX_q/view?usp=sharing)  |
-
-## **Aulas 5 e 6:** Medidas de dispersão (ou variabilidade), assimetria e curtose
-
-- Nessas aulas, serão apresentados as principais medidas de variabiliade, as medidas de Simetria e Curtose, como se constroi um *BoxPlot*, e como é feito o cálculo para a detecção de *OutLiers*.
-
-- Todo o conteúdo dessa aula, será abordado de forma assíncrona (videoaulas e lista de exercícios). 
-
-- Para a atividade síncrona, é sugerido que os alunos assistam as videoaulas e tentem fazer os exercícios propostos.
-
-| Atividade  |       Tipo de Atividade                                       | Links|
-| :---------: | ------------------------------------------------------------ | :---:|
-|  -          | **Medidas de dispersão** |    |
-| Assíncrona | Videoaula sobre a Aula 5 - Vídeo 1  |  [link](https://drive.google.com/file/d/15STlyBwBRHOa_gOe5xQqzYsdZ8S4Lndc/view?usp=sharing)  |
-| Assíncrona | Videoaula sobre a Aula 5 - Vídeo 2 |  [link](https://drive.google.com/file/d/1OWEb_roUFVNoWOUoz42jiMHodKfV7YrB/view?usp=sharing)  |
-| Assíncrona | Videoaula sobre a Aula 5 - Vídeo 3 | [link](https://drive.google.com/file/d/1mB2b1jMlSqW1F0V3L-aivoWW8O54e6IA/view?usp=sharing)   |
-| Assíncrona | Slides sobre a Aula 5 | [link](https://drive.google.com/file/d/1rN0dOCIQOi23Yt1q8T-DfGWFxfRPn8IO/view?usp=sharing)   |
-|  -          | **Medidas de assimetria e curtose + boxplot** |    |
-| Assíncrona | Videoaula sobre a Aula 6 - Vídeo 1  |  [link](https://drive.google.com/file/d/1x0G3asedA0-piFvla_oXZz93ofQyHwN8/view?usp=sharing)  |
-| Assíncrona | Videoaula sobre a Aula 6 - Vídeo 2 |  [link](https://drive.google.com/file/d/1iQvBFw_bwqF2u3GioWocgu8mie32V4BW/view?usp=sharing)  |
-| Assíncrona | Videoaula sobre a Aula 6 - Vídeo 3 |  [link](https://drive.google.com/file/d/1ySw28-WKRqBaLGmDw3KOBx7V-XNnfboK/view?usp=sharing)  |
-| Assíncrona | Slides sobre a Aula 6 | [link](https://drive.google.com/file/d/1BlijIVVbV3cTIQ1VpODvHugDbhx3cmf1/view?usp=sharing)   |
-|  -          | **-** |    |
-| Assíncrona | Lista de exercícios sobre as Aulas 5 e 6 |  [link](https://drive.google.com/file/d/1vx84yIf2eiDlBIsXGnwT1jIUa1wJll40/view?usp=sharing)  |
-| Síncrona | Atividades síncronas a respeito das Aulas 5 e 6 |  [link](https://drive.google.com/file/d/1QH5tyOiFG5oI8zyt445tXDrRQXOxbelr/view?usp=sharing)  |
-
-
-## **Aula 7:** Análise Bidimensional (ou medidas de associação)
-
-- Para esta aula serão mostrados algumas medidas mais usuais para investigar a associação entre variáveis qualitativas e quantitativas, são elas: 
-    
-    1) Para variáveis qualitativas ou categóricas: Estatística de Qui-Quadrado e o coeficiente de Contingência de Pearson;
-    2) Para variáveis quantitativas: Diagrama de Dispersão e o Coeficiente de Correlação Linear de Pearson.
-
-- Todo o conteúdo dessa aula, será abordado de forma assíncrona (videoaulas e lista de exercícios). 
-
-- Para a atividade síncrona, é sugerido que os alunos assistam as videoaulas e tentem fazer os exercícios propostos.
-
-| Atividades  |       Tipo de Atividade                                      | Links |
-| :---------: | ------------------------------------------------------------ | :---: |
-| Assíncrona | Videoaula sobre a Aula 7 - Vídeo 1  |  [link](https://drive.google.com/file/d/199RNuven_68lYj1vup9v6EuB2IzXFnxl/view?usp=sharing)  |
-| Assíncrona | Videoaula sobre a Aula 7 - Vídeo 2 |  [link](https://drive.google.com/file/d/1VKCl8RDGw23hAamLM27LG1ir7xLm3QBE/view?usp=sharing)  |
-| Assíncrona | Slides sobre a Aula 7 | [link](https://drive.google.com/file/d/1rZmRpbnHb6r58G-WNeFqZoKlLC1lqaYe/view?usp=sharing)   |
-| Assíncrona | Lista de exercícios sobre a Aula 7 | [link](https://drive.google.com/file/d/1B0f3eHRqyZ64LvAJdTb-cm-XSYz2-ach/view?usp=sharing)  |
-| Síncrona | Atividades síncronas a respeito da Aula 7 | [link](https://drive.google.com/file/d/1SFjLSm0ajaTAok2lVrJKZyvcVQ25hR0s/view?usp=sharing)  |
-
-## **Aula 8:** Introdução à probabilidade
-
-- Para esta aula serão apresentados alguns conceitos de teoria da probabilidade, explorando os seguintes tópicos: experimento aleatório, espaço amostral, eventos, probabilidade condicional, teorema da probabilidade total e teorema de Bayes.
-    
-- Todo o conteúdo dessa aula, será abordado de forma assíncrona (videoaulas e lista de exercícios). 
-
-- Para a atividade síncrona, é sugerido que os alunos assistam as videoaulas e tentem fazer os exercícios propostos.
-
-| Atividades  |       Tipo de Atividade                                     | Links |
-| :---------: | ------------------------------------------------------------ | :---: |
-| Assíncrona | Videoaula sobre a Aula 8 - Vídeo 1  |  [link](https://www.dropbox.com/s/k0wcab9wmssvzch/EstBasica_aula8_video1_4.mp4?dl=0)  |
-| Assíncrona | Videoaula sobre a Aula 8 - Vídeo 2 |  [link](https://www.dropbox.com/s/2kfbryuonp06cyw/EstBasica_aula8_video2_4.mp4?dl=0)  |
-| Assíncrona | Videoaula sobre a Aula 8 - Vídeo 3  |  [link](https://www.dropbox.com/s/0emkqik85z3rqnx/EstBasica_aula8_video3_4.mp4?dl=0)  |
-| Assíncrona | Videoaula sobre a Aula 8 - Vídeo 4 |  [link](https://www.dropbox.com/s/qfzmsa3dldudl6s/EstBasica_aula8_video4_4.mp4?dl=0)  |
-| Assíncrona | Slides sobre a Aula 8 | [link](https://www.dropbox.com/s/2rxb1eutyb2tznw/Aula8.pdf?dl=0)   |
-| Assíncrona | Lista de exercícios sobre a Aula 8 | [link](https://www.dropbox.com/s/euavjjf012d3e3c/lista_estatisticabasica8.pdf?dl=0)  |
-| Síncrona | Atividades síncronas a respeito da Aula 8 | [link](https://www.dropbox.com/s/qfx9y19qoyn3879/Aula8_sincrona_feita2.pdf?dl=0) |
-
-## **Aula 9:** Variáveis aleatórias
-
-- Para esta aula serão apresentados alguns conceitos a respeito de variáveis aleatórias, mais especificamente va discretas, e de seus principais parâmetros característicos (esperança, variância e desvio padrão)
-    
-- Todo o conteúdo dessa aula, será abordado de forma assíncrona (videoaulas e lista de exercícios). 
-
-- Para a atividade síncrona, é sugerido que os alunos assistam as videoaulas e tentem fazer os exercícios propostos.
-
-| Atividades  |       Tipo de Atividade                                      | Links |
-| :---------: | ------------------------------------------------------------ | :---: |
-| Assíncrona | Videoaula sobre a Aula 9 - Vídeo 1  |  [link](https://www.dropbox.com/s/wwxegjyngqkwit5/EstBasica_aula9_video1_2.mp4?dl=0)  |
-| Assíncrona | Videoaula sobre a Aula 9 - Vídeo 2 |  [link](https://www.dropbox.com/s/iiwb4rq76nckv04/EstBasica_aula9_video2_2.mp4?dl=0)  |
-| Assíncrona | Slides sobre a Aula 9 | [link](https://www.dropbox.com/s/565lf480gyg8xjo/Aula9.pdf?dl=0)   |
-| Síncrona | Atividades síncronas a respeito da Aula 9 | [link](https://www.dropbox.com/s/2l7t2hyusyx6n42/Aula9_sincrona_feita2.pdf?dl=0)  |
-
-`r colFmt("**Obs:** Para esta aula não haverá lista de exercícios.",'blue')`
-
-
-## **Aula 10:** Distribuições de probabilidade para VA discretas
-
-- Para esta aula serão apresentados alguns modelos de probabilidade para variáveis aleatórias discretas, modelos de Bernoulli e modelo Binomial, e seus principais parâmetros característicos (esperança, variância e desvio padrão)
-    
-- Todo o conteúdo dessa aula, será abordado de forma assíncrona (videoaulas e lista de exercícios). 
-
-- Para a atividade síncrona, é sugerido que os alunos assistam as videoaulas e tentem fazer os exercícios propostos.
-
-| Atividades  |       Tipo de Atividade                                      | Links |
-| :---------: | ------------------------------------------------------------ | :---: |
-| Assíncrona | Videoaula sobre a Aula 10 - Vídeo 1  |  [link](https://www.dropbox.com/s/5zzckqtqzy5ozbt/EstBasica_aula10_video1_2.mp4?dl=0)  |
-| Assíncrona | Videoaula sobre a Aula 10 - Vídeo 2 |  [link](https://drive.google.com/file/d/1Jk2HpumrpQ-N69soV_qbTDc6H3GfNpGI/view?usp=sharing)  |
-| Assíncrona | Videoaula sobre a Aula 10 - Vídeo 3 |  [link](https://www.dropbox.com/s/ru54675hrgghj4k/EstBasica_aula10_video3_poisson.mp4?dl=0)  |
-| Assíncrona | Slides sobre a Aula 10 | [link](https://www.dropbox.com/s/dk7p6su9f47i5c5/Aula10.pdf?dl=0)   |
-| Assíncrona | Lista de exercícios sobre a Aula 10 | [link](https://www.dropbox.com/s/pvy3olr3q75zq8l/lista_estatisticabasica10.pdf?dl=0)  |
-| Síncrona | Atividades síncronas a respeito da Aula 10 | [link](https://www.dropbox.com/s/9j837n943e7ojdo/Aula10_sincrona_feita.pdf?dl=0) |
-
-## **Aula 11:** Distribuições de probabilidade para VA contínuas
-
-- Para esta aula serão apresentados um modelo de probabilidade para variáveis aleatórias contínuas, o modelos de distribuição normal.
-    
-- Todo o conteúdo dessa aula, será abordado de forma assíncrona (videoaulas e lista de exercícios). 
-
-- Para a atividade síncrona, é sugerido que os alunos assistam as videoaulas e tentem fazer os exercícios propostos.
-
-| Atividades  |       Tipo de Atividade                                      | Links |
-| :---------: | ------------------------------------------------------------ | :---: |
-| Assíncrona | Videoaula sobre a Aula 11 - Vídeo 1  |  [link](https://www.dropbox.com/s/b84j02t4nxr1px8/EstBasica_aula11_video1_4.mp4?dl=0)  |
-| Assíncrona | Videoaula sobre a Aula 11 - Vídeo 2 |  [link](https://www.dropbox.com/s/j6rdboxdl9khgxr/EstBasica_aula11_video2_4.mp4?dl=0)  |
-| Assíncrona | Videoaula sobre a Aula 11 - Vídeo 3  |  [link](https://www.dropbox.com/s/v6w4vpl9eupd0bg/EstBasica_aula11_video3_4.mp4?dl=0)  |
-| Assíncrona | Videoaula sobre a Aula 11 - Vídeo 4 |  [link](https://www.dropbox.com/s/msrjy8pb76hnqob/EstBasica_aula11_video4_4.mp4?dl=0)  |
-| Assíncrona | Slides sobre a Aula 11 | [link](https://www.dropbox.com/s/n36wffnq5z2ndd6/Aula11.pdf?dl=0)   |
-| Assíncrona | Lista de exercícios sobre a Aula 11 | [link](https://www.dropbox.com/s/gplwvlycconodlw/lista_estatisticabasica11.pdf?dl=0)  |
-| Síncrona | Atividades síncronas a respeito da Aula 11 | [link](https://www.dropbox.com/s/chhqj10rsuilywm/Aula11_sincrona_feita2.pdf?dl=0) |
-
-**Obs:** Para a resolução dos exercícios iremos precisar utilizar a tabela da **distribuição normal padronizada** [link](https://www.dropbox.com/s/4r0xa42xl6qe4t3/tabela_normal.pdf?dl=0)
-
-## **Aula 12:** Introdução à inferência estatística
-
-- Para esta aula serão apresentados alguns conceitos básicos para a intodução à inferência estatística. Apenas iremos explorar a elaboração do intervalo de confiança para a média populacional supondo a variância populacional conhecida.
-    
-- Todo o conteúdo dessa aula, será abordado de forma assíncrona (videoaulas e lista de exercícios). 
-
-- Para a atividade síncrona, é sugerido que os alunos assistam as videoaulas e tentem fazer os exercícios propostos.
-
-| Atividades  |       Tipo de Atividade                                      | Links |
-| :---------: | ------------------------------------------------------------ | :---: |
-| Assíncrona | Videoaula sobre a Aula 12 - Vídeo 1  |  [link](https://www.dropbox.com/s/1nw1prdxx4wg4po/EstBasica_aula12_video1_2.mp4?dl=0)  |
-| Assíncrona | Videoaula sobre a Aula 12 - Vídeo 2 |  [link](https://www.dropbox.com/s/hfptdpkdavj0j1h/EstBasica_aula12_video2_2.mp4?dl=0)  |
-| Assíncrona | Slides sobre a Aula 12 | [link](https://www.dropbox.com/s/bz4j20jqfig04m3/Aula12.pdf?dl=0)   |
-| Assíncrona | Lista de exercícios sobre a Aula 12 | [link](https://www.dropbox.com/s/ofqpzouhasdfbcp/lista_estatisticabasica12.pdf?dl=0) |
-| Síncrona | Atividades síncronas a respeito da Aula 12 | [link](https://www.dropbox.com/s/en799ok3kttl837/Aula12_sincrona_feita2.pdf?dl=0) |
-
-**Obs:** Para a resolução dos exercícios iremos precisar utilizar a tabela da **distribuição normal padronizada** [link](https://www.dropbox.com/s/4r0xa42xl6qe4t3/tabela_normal.pdf?dl=0)
-
-# Orientações para a elaboração das provas
-
-- As provas deverão ser feitas segundo as seguintes orientações: [link](https://www.dropbox.com/s/z0ep4bv501tiary/instru%C3%A7%C3%B5es_prova.pdf?dl=0)
-
-- Segue um modelo do arquivo que deverá ser enviado (feito o upload através do SIGAA) com a resolução das questões da prova: [link](https://www.dropbox.com/s/wtrr5a3f6znkof2/Wagner_Tassinari_P1_IC281.pdf?dl=0)
-
-<!-- ## ATENÇÃO !!!!!!!!!! -->
-
-<!-- - **Prova de segunda chamada:** Quem for fazer a prova de segunda chamada, basta enviar um email até domingo (dia 22/08), e no assunto do email colocar: `r colFmt("PROVA SEGUNDA CHAMADA ",'red')`. No conteúdo do email colocar o nome completo, turma e qual será a prova, ou seja, segunda chamada referente a P1 ou a P2. -->
-
-<!-- - **Prova Optativa:** Quem for fazer a prova optativa, basta enviar um email até o dia 01/09, e no assunto do email colocar: `r colFmt("PROVA OPTATIVA ",'red')`. No conteúdo do email colocar o nome completo e a turma. -->
 
