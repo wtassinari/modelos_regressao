@@ -9,7 +9,7 @@ author: |
 date: "2021"
 output:
   prettydoc::html_pretty:
-    theme: cayman
+    theme: hpstr
     highlight: github
     toc: true
 ---
