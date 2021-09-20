@@ -205,11 +205,12 @@ Fourth Edition. Springer.
 
 - Revisão sobre o conteúdo de análise exploratória de dados.
 
-- Não está prevista atividade assíncrona para esta aula
+- Não está prevista atividade assíncrona para esta aula [link](Aula1/AED.html)
 
 | Atividades |             Tipo de atividades            |                                            Links                                           |
 |:----------:|:-----------------------------------------:|:------------------------------------------------------------------------------------------:|
 |  Síncrona  | Atividades síncronas a respeito da Aula 1 | [link](https://drive.google.com/file/d/1eZ-BUHCMjiwHkBoNBlnJGMTG4NKgYWzy/view?usp=sharing) |
+
 
 
 ## **Aula 2:** Modelo de regressão simples.
