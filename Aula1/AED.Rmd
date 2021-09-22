@@ -111,8 +111,8 @@ colFmt <- function(x,color) {
 
 ### 2. Utilização de medidas de estatística descritiva
     
-* Medidas de frequência (vars. categóricas)
-* Medidas de têndencia central e dispersão (vars. quantitativas)
+* Contagens ou Distribuição de Frequências (Variáveis Qualitativas ou Categóricas)
+* Medidas de têndencia central e dispersão (Variáveis Quantitativas)
 * Medidas de associação (Análises Bivariadas)
 * Utilização de métodos visuais (gráficos)
     
@@ -121,42 +121,45 @@ colFmt <- function(x,color) {
 
 # Prática
 
-- Base de dados: daisy.xls
+- Base de dados: daisy2.xlsx
 
-- Esta base trata-se de dados de um estudo tipo coorte de um rebanho bovino, a respeito das condições de saúde de um rebanho leiteiro no período pós-parto, juntamente com medidas de desempenho reprodutivo. O objetivo é avaliar o efeito de várias doenças no desempenho reprodutivo.
+- Esta base trata-se de conjunto de dados proveniente de um estudo tipo coorte a respeito das condições do manejo reprodutivo em rebanhos de bovinos leiteiros. O objetivo é avaliar o desempenho reprodutivo e a produção de leite desses animais.
 
 - Dicionário de variáveis:
 
-|  Variável |                              Descrição                             | Codificação |
-|:---------:|:------------------------------------------------------------------:|-------------|
-| **farmnum**   | id propriedade                                                     |             |
-| **cownum**    | id animal                                                          |             |
-| **firstest**  | dias do parto ao primeiro estro observado                          | dias        |
-| **firstbrb**  | dias desde o parto até a primeira criação (40 dias período mínimo) | dias        |
-| **calvcon**   | dias desde o parto até a concepção (gravidez)                      | dias        |
-| **age**       | idade em anos                                                      | anos        |
-| **culled**    | desenvolveu folículos ovarianos císticos ?                         | 0/1         |
-| **dayscull**  | dias desde pós-parto até remoção da placenta                       | dias        |
-| **endomet**   | teve endometrite ?                                                 | 0/1         |
-| **mastitis**  | teve mastite ?                                                     | 0/1         |
-| **metritis**  | teve metrite ?                                                     | 0/1         |
-| **milkfever** | teve febre do leite ?                                              | 0/1         |
-| **ovar**      | teve doença cística do ovário ?                                    | 0/1         |
-| **pyomet**    | teve piometrite ?                                                  | 0/1         |
-| **retpla**    | as membranas fetais foram retidas por 48 horas ?                   | 0/1         |
+| Variáveis  | Descrição                                          | Tipo de Variáveis |
+| :--------- | -------------------------------------------------- | :---------------- |
+| region     | Regiões de estudo (1 a 4 regiões estudadas)        | Categórica        |
+| herd       | Identificador do rebanho                           | Contagem          |
+| cow        | Identificador do animal                            | Contagem          |
+| study_lact | Lactação (Primeira ou segunda lactação no estudo)  | Dicotômica        |
+| herd_size  | Tamanho do rebanho                                 | Contínua          |
+| mwp        | Período de espera até a concepção                  | Contínua          |
+| parity     | Número de lactações                                | Contagem          |
+| milk120    | Litros de leite nos primeiros 120 dias de lactação | Contínua          |
+| calv_dt    | Data do parto                                      | Data              |
+| cf         | Intervalo parto/concepção ou *dias em aberto*      | Contínua          |
+| fs         | Concepção de primeira (1/0)                        | Dicotômica        |
+| cc         | Intervalo do parto até a concepção                 | Contínua          |
+| wpc        | Intervalo do período de espera atá a concepção     | Contínua          |
+| spc        | Serviços de concepção                              | Categórica        |
+| twin       | Nascimento duplo (1/0)                             | Dicotômica        |
+| dyst       | Complicações no parto (*Distocia fetal*) (1/0)                        | Dicotômica        |
+| rp         | Retenção da placenta no parto (1/0)                | Dicotômica        |
+| vag_disch  | Corrimento vaginal observado (1/0)                 | Dicotômica        |
+| h7         | Indicador do subset do rebanho (1/0)               | Dicotômica        |
 
 
+- Vamos supor que estamos interessados em estudar a relação entre **complicações no parto** em relação a algumas variáveis explicativas.
 
-- Vamos supor que estamos interessados em estudar a relação entre a metrite em relação a algumas variáveis explicativas
-
-- Neste exemplo prático, vamos mostrar algumas técnicas de EAD para dados quantitativos e categóricos usando apenas algumas variáveis da base de dados daisy.
+- Neste exemplo prático, vamos mostrar algumas técnicas de EAD para dados quantitativos e categóricos usando apenas algumas variáveis da base de dados daisy2.
 
 - Serão escolhidas as variáveis: 
     
-    - **Variável de desfecho:** metrite
+    - **Variável de desfecho:** dyst
     
-    - **Variáveis de explicativas:** calvcon, age, culled, ovar, retpla
-
+    - **Variáveis de explicativas:** mwp, parity, milk120, twin, rp, vag_disch
+    
 ---
 
 # Preparando o banco de dados
@@ -166,29 +169,32 @@ colFmt <- function(x,color) {
 
 ```{r, echo=T}
 library(readxl)
-daisy <- read_excel("~/Google Drive/UFRRJ/Modelos Regressão 2021/Bancos/daisy.xls")
+daisy2 <- read_excel("~/Google Drive/UFRRJ/Modelos Regressão 2021/Bancos/daisy2.xlsx")
 
+daisy2 <- daisy2[daisy2$h7 == 1, ] # vamos apenas usar um subconjunto dos dados
 ```
 
 
 Ou siga as seguintes etapas no RStudio: `r colFmt(" *Environment --> Import Dataset --> From Excel...*", "orange")`
 
 
-* Selecine as variáveis para compor o banco que será trabalhado
+* Selecione as variáveis para compor o banco que será trabalhado
 
-   - `r colFmt(" *cownum* - Identificador do animal", "darkviolet")`
-   - `r colFmt(" *metritis* - Metrite", "darkviolet")`
-   - `r colFmt(" *calvcon* - Dias desde o parto até a concepção ", "darkviolet")`
-   - `r colFmt(" *age* - Idade", "darkviolet")`
-   - `r colFmt(" *culled* - Folículos ovarianos císticos ", "darkviolet")`
-   - `r colFmt(" *ovar* - Doença cística do ovário ", "darkviolet")`
-   - `r colFmt(" *retpla* - Membranas fetais foram retidas", "darkviolet")`
+   - `r colFmt(" *cow* - Identificador do animal", "darkviolet")`
+   - `r colFmt(" *dyst* - Complicações no parto (Distocia fetal)", "darkviolet")`
+   - `r colFmt(" *milk120* - Litros de leite nos primeiros 120 dias de lactação", "darkviolet")`
+   - `r colFmt(" *mwp* - Período de espera até a concepção", "darkviolet")`
+   - `r colFmt(" *parity* - Número de lactação", "darkviolet")`
+   - `r colFmt(" *twin* - Nascimento duplo", "darkviolet")`
+   - `r colFmt(" *rp* - Retenção da placenta no parto ", "darkviolet")`
+   - `r colFmt(" *vag_disch* - Corrimento vaginal observado", "darkviolet")`
   
 
 
 ```{r, echo=T}
-myvars <- c("cownum", "metritis", "calvcon", "age", "culled", "ovar", "retpla")
-banco <- daisy[myvars]
+myvars <- c("cow", "dyst", "milk120", "mwp", "parity", "twin", "rp", "vag_disch")
+banco <- daisy2[myvars]
+
 ```
 
 
@@ -200,21 +206,21 @@ banco <- daisy[myvars]
 
 # Colocando os labels nas variáveis categóricas
 
-# Metrite
-banco$metritis <- factor(banco$metritis, labels = c("Nao", "Sim"))
-banco$metritis <- relevel(banco$metritis, "Sim")
+# Complicações no parto
+banco$dyst <- factor(banco$dyst, labels = c("Nao", "Sim"))
+banco$dyst <- relevel(banco$dyst, "Sim")
 
-# Folículos ovarianos císticos
-banco$culled <- factor(banco$culled, labels = c("Nao", "Sim"))
-banco$culled <- relevel(banco$culled, "Sim")
+# Nascimento duplo
+banco$twin <- factor(banco$twin, labels = c("Nao", "Sim"))
+banco$twin <- relevel(banco$twin, "Sim")
 
-# Doença cistica do ovario
-banco$ovar <- factor(banco$ovar, labels = c("Nao", "Sim"))
-banco$ovar <- relevel(banco$ovar, "Sim")
+# Retenção da placenta no parto 
+banco$rp <- factor(banco$rp, labels = c("Nao", "Sim"))
+banco$rp <- relevel(banco$rp, "Sim")
 
-# Membranas fetais foram retidas por 48 horas
-banco$retpla <- factor(banco$retpla, labels = c("Nao", "Sim"))
-banco$retpla <- relevel(banco$retpla, "Sim")
+# Corrimento vaginal observado 
+banco$vag_disch <- factor(banco$vag_disch, labels = c("Nao", "Sim"))
+banco$vag_disch <- relevel(banco$vag_disch, "Sim")
 
 ```
 
@@ -237,21 +243,21 @@ plot_intro(banco)
 
 ```{r, echo = T, results='markdown'}
 
-# Metrite
-table(banco$metritis) # Freq simples
-prop.table(table(banco$metritis)) # Freq relativa
+# Complicações no parto
+table(banco$dyst) # Freq simples
+prop.table(table(banco$dyst)) # Freq relativa
 
-# Folículos ovarianos císticos
-table(banco$culled) # Freq simples
-prop.table(table(banco$culled)) # Freq relativa
+# Nascimento duplo
+table(banco$twin) # Freq simples
+prop.table(table(banco$twin)) # Freq relativa
 
-# Doença cística do ovário
-table(banco$ovar) # Freq simples
-prop.table(table(banco$ovar)) # Freq relativa
+# Retenção da placenta no parto 
+table(banco$rp) # Freq simples
+prop.table(table(banco$rp)) # Freq relativa
 
-#  Membranas fetais foram retidas
-table(banco$retpla) # Freq simples
-prop.table(table(banco$retpla)) # Freq relativa
+# Corrimento vaginal observado 
+table(banco$vag_disch) # Freq simples
+prop.table(table(banco$vag_disch)) # Freq relativa
 
 ```
 
@@ -263,10 +269,10 @@ prop.table(table(banco$retpla)) # Freq relativa
 ```{r, echo = T, out.width='90%'}
 
 par(mfrow=c(2,2))
-barplot(prop.table(table(banco$metritis)), ylab = "Freq. Relativa", xlab = "Metrite")
-barplot(prop.table(table(banco$culled)), ylab = "Freq. Relativa", xlab = "Folículos ovarianos císticos") 
-barplot(prop.table(table(banco$ovar)), ylab = "Freq. Relativa", xlab = "Doença cística do ovário")
-barplot(prop.table(table(banco$retpla)), ylab = "Freq. Relativa", xlab = "Membranas fetais foram retidas")
+barplot(prop.table(table(banco$dyst)), ylab = "Freq. Relativa", xlab = "Complicações no parto")
+barplot(prop.table(table(banco$twin)), ylab = "Freq. Relativa", xlab = "Nascimento duplo") 
+barplot(prop.table(table(banco$rp)), ylab = "Freq. Relativa", xlab = "Retenção da placenta no parto")
+barplot(prop.table(table(banco$vag_disch)), ylab = "Freq. Relativa", xlab = "Corrimento vaginal observado")
 ```
 
 ---
@@ -275,11 +281,14 @@ barplot(prop.table(table(banco$retpla)), ylab = "Freq. Relativa", xlab = "Membra
 
 
 ```{r, echo = T, results='markdown'}
-# Variavel idade
-summary(banco$age)
+# Produção de leite nos primeiros 120 dias de lactação
+summary(banco$milk120)
 
-# Variavel calvcon - Dias desde o parto até a concepção
-summary(banco$calvcon)
+# Período de espera até a concepção
+summary(banco$mwp)
+
+# Números de lactações
+summary(banco$parity)
 
 ```
 
@@ -289,43 +298,49 @@ summary(banco$calvcon)
 
 
 ```{r, echo = T, eval =T, out.width='90%'}
-# Idade
 par(mfrow=c(2,1))
-hist(banco$age, xlab = "Idade", 
-                  main="Histograma da Idade")
-boxplot(banco$age, xlab = "Idade", 
-                main="Boxplot da Idade", horizontal=TRUE)
+hist(banco$milk120, xlab = "Produção de leite", 
+                  main="Distribuição da produção de leite")
+boxplot(banco$milk120, xlab = "Produção de leite", 
+                main="Boxplot da produção de leite", horizontal=TRUE)
 
 ```
 
 
 
 ```{r, echo = T, eval =T, out.width='90%'}
-# Dias desde o parto até a concepção
 par(mfrow=c(2,1))
-hist(banco$calvcon, xlab = "calvcon", 
-                  main="Dias desde o parto até a concepção")
-boxplot(banco$calvcon, xlab = "calvcon", 
-                main="Boxplot da calvcon", horizontal=TRUE)
+hist(banco$mwp, xlab = "mwp", 
+                  main="Período de espera até a concepção")
+boxplot(banco$mwp, xlab = "calvcon", 
+                main="Boxplot da mwp", horizontal=TRUE)
 
 ```
-
-
----
-
-# Categorizando a variável idade 
 
 ```{r, echo = T, eval =T, out.width='90%'}
+par(mfrow=c(2,1))
+hist(banco$parity, xlab = "parity", 
+                  main="Números de lactações")
+boxplot(banco$parity, xlab = "parity", 
+                main="Boxplot da parity", horizontal=TRUE)
 
-# Idade categorica
-banco$faixa_eta <- cut((banco$age), breaks = c(0, 2, 5, Inf), labels = c("Jovem", 
-    "Adulto", "Velho"))
-table(banco$faixa_eta)
 ```
 
 ---
 
-# Distribuião da metrite segundo a faixa etária
+# Categorizando a variável parity
+
+```{r, echo = T, eval =T, out.width='90%'}
+banco$parity_cat <- cut((banco$parity), breaks = c(0, 1, 2, 4, Inf), labels = c("Até 1", 
+    "1 a 2", "2 a 4", "Mais de 4"))
+table(banco$parity_cat)
+barplot(prop.table(table(banco$parity_cat)), ylab = "Freq. Relativa", xlab = "Números de lactações", horiz=TRUE)
+
+```
+
+---
+
+# Distribuião das complicações no parto segundo o número de lactações
 
 
 * Utilizando o pacote *gmodels* [link](https://www.rdocumentation.org/packages/gmodels)
@@ -333,7 +348,7 @@ table(banco$faixa_eta)
 ```{r, echo = T, eval =F, out.width='70%', results='markdown'}
 library(gmodels)
 
-CrossTable(banco$faixa_eta, banco$metritis, digits=2, prop.r=FALSE, 
+CrossTable(banco$parity_cat, banco$dyst, digits=2, prop.r=FALSE, 
            prop.c=TRUE, prop.t=FALSE, prop.chisq=FALSE, 
            chisq = FALSE, fisher=FALSE, mcnemar=FALSE)
 
@@ -342,21 +357,21 @@ CrossTable(banco$faixa_eta, banco$metritis, digits=2, prop.r=FALSE,
 ````{r, echo = T, eval =F, out.width='70%', results='markdown'}
 # Stacked Bar Plot 
 
-tabela <- table(banco$faixa_eta, banco$metritis)
+tabela <- table(banco$parity_cat, banco$dyst)
 
-barplot(prop.table(tabela), main="Metrite segundo a faixa etária",
-  xlab="Idade", col=c("blue", "orange", "red"),
+barplot(prop.table(tabela), main="Complicações no parto segundo o número de lactações",
+  xlab="Complicações no parto", col=c("blue", "orange", "red", "darkred"),
   legend = rownames(tabela), args.legend = list(x = 'topleft'))
 
 ```
 
-# Distribuião da metrite segundo a presença de folículos ovarianos císticos
+# Distribuião das complicações no parto segundo o nascimento duplo
 
 
 ```{r, echo = F, out.width='70%', results='markdown'}
 library(gmodels)
 
-CrossTable(banco$culled, banco$metritis, digits=2, prop.r=FALSE, 
+CrossTable(banco$twin, banco$dyst, digits=2, prop.r=FALSE, 
            prop.c=TRUE, prop.t=FALSE, prop.chisq=FALSE, 
            chisq = FALSE, fisher=FALSE, mcnemar=FALSE)
 
@@ -365,21 +380,21 @@ CrossTable(banco$culled, banco$metritis, digits=2, prop.r=FALSE,
 ````{r, echo = T, eval =F, out.width='70%', results='markdown'}
 # Stacked Bar Plot 
 
-tabela <- table(banco$culled, banco$metritis)
+tabela <- table(banco$twin, banco$dyst)
 
-barplot(prop.table(tabela), main="Metrite segundo a presença de folículos ovarianos císticos",
-  xlab="Presença de folículos ovarianos císticos", col=c("blue", "red"),
+barplot(prop.table(tabela), main="Complicações no parto segundo o nascimento duplo",
+  xlab="Complicações o parto", col=c("blue", "red"),
   legend = rownames(tabela), args.legend = list(x = 'topleft'))
 
 ```
 
 
-# Distribuião da metrite segundo a presença de doença cística do ovário
+# Complicações no parto segundo a retenção da placenta no parto 
 
 
 ```{r, echo = F, out.width='70%', results='markdown'}
 
-CrossTable(banco$ovar, banco$metritis, digits=2, prop.r=FALSE, 
+CrossTable(banco$rp, banco$dyst, digits=2, prop.r=FALSE, 
            prop.c=TRUE, prop.t=FALSE, prop.chisq=FALSE, 
            chisq = FALSE, fisher=FALSE, mcnemar=FALSE)
 
@@ -388,69 +403,48 @@ CrossTable(banco$ovar, banco$metritis, digits=2, prop.r=FALSE,
 ````{r, echo = T, eval =F, out.width='70%', results='markdown'}
 # Stacked Bar Plot 
 
-tabela <- table(banco$ovar, banco$metritis)
+tabela <- table(banco$rp, banco$dyst)
 
-barplot(prop.table(tabela), main="Metrite segundo a presença de doença cística do ovário",
-  xlab="Presença de folículos ovarianos císticos", col=c("blue", "red"),
+barplot(prop.table(tabela), main="Complicações no parto segundo a retenção da placenta no parto",
+  xlab="Complicações no parto", col=c("blue", "red"),
   legend = rownames(tabela), args.legend = list(x = 'topleft'))
 
 ```
 
-# Distribuião da metrite segundo a retenção das membranas fetais
 
+---
 
-```{r, echo = F, out.width='70%', results='markdown'}
+# Distribuição da produção do leite segundo complicações no parto
 
-CrossTable(banco$retpla, banco$metritis, digits=2, prop.r=FALSE, 
-           prop.c=TRUE, prop.t=FALSE, prop.chisq=FALSE, 
-           chisq = FALSE, fisher=FALSE, mcnemar=FALSE)
+```{r, echo = T, out.width='90%', results='markdown'}
+by(banco$milk120, banco$dyst, summary)
 
 ```
 
-````{r, echo = T, eval =F, out.width='70%', results='markdown'}
-# Stacked Bar Plot 
-
-tabela <- table(banco$retpla, banco$metritis)
-
-barplot(prop.table(tabela), main="Metrite segundo a retenção das membranas fetais",
-  xlab="Presença de folículos ovarianos císticos", col=c("blue", "red"),
-  legend = rownames(tabela), args.legend = list(x = 'topleft'))
+```{r, echo = T, out.width='90%', results='markdown'}
+boxplot(milk120 ~ dyst, banco, ylab="Produçaõ de leite (l)", xlab = "Complicações no parto")
 
 ```
 
 ---
 
-# Distribuição da metrite segundo a idade como variável quatitativa
+# Distribuição do número de lactações segundo complicações no parto 
 
 ```{r, echo = T, out.width='90%', results='markdown'}
-by(banco$age, banco$metritis,summary)
+by(banco$parity, banco$dyst,summary)
 
 ```
 
 ```{r, echo = T, out.width='90%', results='markdown'}
-boxplot(age ~ metritis, banco, ylab="Idade", xlab = "metritis")
-
-```
-
----
-
-# Distribuição da metrite segundo a qunatidade de dias dias desde o parto até a concepção (gravidez) 
-
-```{r, echo = T, out.width='90%', results='markdown'}
-by(banco$calvcon, banco$metritis,summary)
-
-```
-
-```{r, echo = T, out.width='90%', results='markdown'}
-boxplot(calvcon ~ metritis, banco, ylab="Dias desde o parto até a concepção", xlab = "Metrite")
+boxplot(parity ~ dyst, banco, ylab="Número de lactações", xlab = "Complicações no parto")
 
 ```
 
 ---
 
-# Análise univariada utilizando o pacote *tableone*
+# Análise univariada e bivariada utilizando o pacote *tableone*
 
-## Exemplo de uma Tabela 1 - univariada
+## Análise univariada
 
 
 ```{r, echo = T, out.width='70%', results='markdown'}
@@ -459,7 +453,7 @@ library(tableone)
 
 # Selecionando as variaveis que irao compor a tabela
 
-myVars <- c("metritis", "calvcon", "age", "faixa_eta", "culled", "ovar", "retpla")
+myVars <- c("dyst", "milk120", "mwp", "parity", "parity_cat", "twin", "rp", "vag_disch")
 
 ## criando o obejeto da TableOne 
 
@@ -470,24 +464,16 @@ print(tabela1, showAllLevels = TRUE)
 
 [*Introduction to tableone*](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html)
 
-
-
 ---
 
-# Análise bivariada utilizando o pacote *tableone* 
-
-## Exemplo de uma Tabela 1 - Bivariada
-
-
-## Pacote *tableone* - Utilizando a variável metrite como desfecho  
+## Análise bivariada, utilizando a variável complicações no parto como desfecho  
 
 
 ```{r, echo = T, out.width='70%', results='markdown'}
 
-myVars2 <- c("calvcon", "age", "faixa_eta", "culled", "ovar", "retpla")
+myVars2 <- c("milk120", "mwp", "parity", "parity_cat", "twin", "rp", "vag_disch")
 
-tabela2 <- CreateTableOne(vars = myVars2, strata = "metritis", 
-                                              data = banco)
+tabela2 <- CreateTableOne(vars = myVars2, strata = "dyst",                                             data = banco)
 print(tabela2, showAllLevels = TRUE)
 ```
 
