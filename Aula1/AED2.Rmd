@@ -1,0 +1,481 @@
+---
+title: "Pós-graduação em Ciências Veterinárias (IV/UFRRJ)"
+subtitle: "Análise Exploratória de Dados (AED) - Parte 2"
+author: |
+  | Adriana Andrade
+  |
+  | Wagner Tassinari 
+  |
+date: "2021"
+output:
+  prettydoc::html_pretty:
+    theme: hpstr
+    highlight: github
+    toc: true
+---
+
+```{r, echo=FALSE}
+htmltools::img(src = knitr::image_uri("figure/logo_ufrrj.jpg"), 
+               alt = 'logo', 
+               style = 'position:absolute; top:20%; right:0%; padding:10px; height:100px;out.width=80%')
+```
+
+
+```{r setup, include=FALSE}
+library(knitr)
+
+## Global options
+options(max.print="75")
+knitr::opts_chunk$set(echo=FALSE,
+               cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE,
+               cache.lazy=FALSE)
+knitr::opts_knit$set(width=75)
+
+```
+
+
+```{r klippy}
+# Insert copy to clipboard buttons in HTML documents
+# remotes::install_github("rlesur/klippy")
+klippy::klippy(
+  lang = c("r", "markdown"),
+  all_precode = FALSE,
+  position = c("top", "right"),
+  color = "navyblue",
+  tooltip_message = "copiar código",
+  tooltip_success = "copiado!"
+)
+
+```
+
+
+```{css echo=FALSE}
+/* Define a margin before h2 element */
+h2  {
+  margin-top: 4em;
+}
+
+/* Define a margin after every first p elements */
+p:first-of-type {
+  margin-bottom: 2em;
+}
+``` 
+
+
+```{r}
+## Color Format
+colFmt <- function(x,color) {
+  
+  outputFormat <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+  
+  if(outputFormat == 'latex') {
+    ret <- paste("\\textcolor{",color,"}{",x,"}",sep="")
+  } else if(outputFormat == 'html') {
+    ret <- paste("<font color='",color,"'>",x,"</font>",sep="")
+  } else {
+    ret <- x
+  }
+
+  return(ret)
+}
+
+```
+
+---
+
+# Um pouco sobre a origem do ggplot
+
+-   A construção de gráficos no R foi revolucionada com a criação do pacote ggplot2, fruto da tese de doutorado de [Hadley Wickham](https://pt.vvikipedla.com/wiki/Hadley_Wickham) em 2008.
+
+-   O estatístico norte-americano [Leland Wilkinson](https://en.wikipedia.org/wiki/Leland_Wilkinson) em 2005, publicou o livro *The Grammar of graphics*, como uma fonte de princípios fundamentais para a construção de gráficos estatísticos. No livro, ele defende que um gráfico é o mapeamento dos dados a partir de atributos estéticos (posição, cor, forma, tamanho) de objetos geométricos (pontos, linhas, barras, caixas).
+
+-   A partir dessa definição, Hadley escreveu A [Layered Grammar of Graphics](https://cfss.uchicago.edu/notes/grammar-of-graphics/), sugerindo que os principais aspectos de um gráfico (dados, sistema de coordenadas, rótulos e anotações) podiam ser divididos em camadas, construídas uma a uma. Essa é a essência do ggplot2.
+
+-   Além de uma filosofia bem fundamentada, o ggplot2 ainda traz outras vantagens em relação aos gráficos do r base, como por exemplo os gráficos podem ser mais flexiveis e naturalmente mais bonitos. Tal estrutura acaba deixando o aprendizado muito mais intuitivo e é possível criar uma imensa gama de gráficos com poucas linhas de código.
+
+------------------------------------------------------------------------
+
+# R base x ggplot2
+
++----------------------------------------------+----------------------------------------------------------+
+| O pacote graphics                            | O pacote ggplot2                                         |
++:============================================:+:========================================================:+
+| Também chamado de R base                     | Fornece alternativas ao R base                           |
++----------------------------------------------+----------------------------------------------------------+
+| Primeiro pacote gráfico do R e o mais usado. | Figuras construídas usando uma **gramática de gráficos** |
++----------------------------------------------+----------------------------------------------------------+
+
+# GGPLOT: Grammar of Graphics
+
+-   **Dado:** o conjunto de dados que será usado
+-   **Estética:** variáveis e escalas para mapear o gráfico
+-   **Estatística:** representação estatística dos dados para melhor entendimento/visualização
+-   **Geometria:** elementos visuais usados no gráfico
+-   **Tema:** estilos cores aspectos gerais
+-   **Faceta:** múltiplos gráficos (sub painéis)
+-   **Coordenada:** representação espacial dos dados
+
+# Tipos de variáveis
+
+-   **Univariadas**
+    -   Variável numérica (dispersão, histograma)
+    -   Variável categórica (gráfico de barras)
+
+-   **Bivariadas**
+    -   Numérica X numérica
+    -   Numérica X categórica
+    -   Categórica X categórica
+    
+---
+
+# Prática
+
+- Base de dados: daisy2.xlsx
+
+- Conjunto de dados proveniente de um estudo tipo coorte a respeito das condições do manejo reprodutivo em rebanhos de bovinos leiteiros. O objetivo é avaliar o desempenho reprodutivo e a produção de leite desses animais.
+
+- Dicionário de variáveis:
+
+| Variáveis  | Descrição                                          | Tipo de Variáveis |
+| :--------- | -------------------------------------------------- | :---------------- |
+| region     | Regiões de estudo (1 a 4 regiões estudadas)        | Categórica        |
+| herd       | Identificador do rebanho                           | Contagem          |
+| cow        | Identificador do animal                            | Contagem          |
+| study_lact | Lactação (Primeira ou segunda lactação no estudo)  | Dicotômica        |
+| herd_size  | Tamanho do rebanho                                 | Contínua          |
+| mwp        | Período de espera até a concepção                  | Contínua          |
+| parity     | Número de lactações                                | Contagem          |
+| milk120    | Litros de leite nos primeiros 120 dias de lactação | Contínua          |
+| calv_dt    | Data do parto                                      | Data              |
+| cf         | Intervalo parto/concepção ou *dias em aberto*      | Contínua          |
+| fs         | Concepção de primeira (1/0)                        | Dicotômica        |
+| cc         | Intervalo do parto até a concepção                 | Contínua          |
+| wpc        | Intervalo do período de espera atá a concepção     | Contínua          |
+| spc        | Serviços de concepção                              | Categórica        |
+| twin       | Nascimento duplo (1/0)                             | Dicotômica        |
+| dyst       | Complicações no parto (*Distocia fetal*) (1/0)                        | Dicotômica        |
+| rp         | Retenção da placenta no parto (1/0)                | Dicotômica        |
+| vag_disch  | Corrimento vaginal observado (1/0)                 | Dicotômica        |
+| h7         | Indicador do subset do rebanho (1/0)               | Dicotômica        |
+
+
+- Vamos supor que estamos interessados em estudar a relação entre **complicações no parto** em relação a algumas variáveis explicativas.
+
+- Neste exemplo prático, vamos mostrar algumas técnicas de EAD para dados quantitativos e categóricos usando apenas algumas variáveis da base de dados daisy2.
+
+- Serão escolhidas as variáveis: 
+    
+    - **Variável de desfecho:** dyst
+    
+    - **Variáveis de explicativas:** mwp, parity, milk120, twin, rp, vag_disch
+    
+---
+
+# Preparando o banco de dados
+
+
+- Abra o banco de dados:
+
+```{r, echo=T}
+library(readxl)
+daisy2 <- read_excel("~/Google Drive/UFRRJ/Modelos Regressão 2021/Bancos/daisy2.xlsx")
+
+daisy2 <- daisy2[daisy2$h7 == 1, ] # vamos apenas usar um subconjunto dos dados
+
+```
+
+
+Ou siga as seguintes etapas no RStudio: `r colFmt(" *Environment --> Import Dataset --> From Excel...*", "orange")`
+
+
+* Selecione as variáveis para compor o banco que será trabalhado
+
+   - `r colFmt(" *cow* - Identificador do animal", "darkviolet")`
+   - `r colFmt(" *dyst* - Complicações no parto (Distocia fetal)", "darkviolet")`
+   - `r colFmt(" *milk120* - Litros de leite nos primeiros 120 dias de lactação", "darkviolet")`
+   - `r colFmt(" *mwp* - Período de espera até a concepção", "darkviolet")`
+   - `r colFmt(" *parity* - Número de lactação", "darkviolet")`
+   - `r colFmt(" *twin* - Nascimento duplo", "darkviolet")`
+   - `r colFmt(" *rp* - Retenção da placenta no parto ", "darkviolet")`
+   - `r colFmt(" *vag_disch* - Corrimento vaginal observado", "darkviolet")`
+  
+
+
+```{r, echo=T}
+myvars <- c("cow", "dyst", "milk120", "mwp", "parity", "twin", "rp", "vag_disch")
+banco <- daisy2[myvars]
+
+```
+
+# Estruturando o banco de dados
+
+```{r, echo = T}
+
+# Colocando os labels nas variáveis categóricas
+
+# Complicações no parto
+banco$dyst <- factor(banco$dyst, labels = c("Nao", "Sim"))
+banco$dyst <- relevel(banco$dyst, "Sim")
+
+# Nascimento duplo
+banco$twin <- factor(banco$twin, labels = c("Nao", "Sim"))
+banco$twin <- relevel(banco$twin, "Sim")
+
+# Retenção da placenta no parto 
+banco$rp <- factor(banco$rp, labels = c("Nao", "Sim"))
+banco$rp <- relevel(banco$rp, "Sim")
+
+# Corrimento vaginal observado 
+banco$vag_disch <- factor(banco$vag_disch, labels = c("Nao", "Sim"))
+banco$vag_disch <- relevel(banco$vag_disch, "Sim")
+
+# Categorizando a variável parity
+
+banco$parity_cat <- cut((banco$parity), breaks = c(0, 1, 2, 4, Inf), labels = c("Até 1", 
+    "1 a 2", "2 a 4", "Mais de 4"))
+```
+
+---
+
+# Filosofia do *ggplot*
+
+- Chamando a biblioteca *ggplot2*
+
+```{r, echo=T}
+# install.packages("ggplot2")
+library(ggplot2)
+```
+
+-   No ggplot2, os gráficos são construídos por camadas (ou, layers, em inglês), sendo a primeira delas dada pela função ggplot(). Essa função recebe um data frame e cria a camada base do gráfico. Se rodarmos apenas a função ggplot(), obteremos um painel em branco.
+
+```{r, echo=T, out.width='70%'}
+g <- ggplot(data = banco)
+g
+```
+
+-   Apesar de termos passado os dados para a função, precisamos especificar como as observações serão mapeadas nos aspectos visuais do gráfico e quais formas geométricas serão utilizadas para isso. Cada camada do gráfico representará um tipo de mapeamento ou personalização. O código abaixo é um exemplo de um gráfico bem simples, construído a partir das duas principais camadas, com as variáveis **milk120** (Litros de leite nos primeiros 120 dias de lactação) e **parity** (Número de lactação).
+
+```{r, echo=T, out.width='70%'}
+g <- g + geom_point(mapping = aes(x = parity , y = milk120))
+g
+```
+
+-   No gráfico acima, a primeira camada é dada pela função `r colFmt("ggplot()","orange")` recebendo um *data frame*. A segunda camada é dada pela função `r colFmt("geom_point()","orange")`, especificando a forma geométrica utilizada no mapeamento das observações;
+
+-   As camadas são somadas com o sinal `r colFmt("+","orange")`, o mapeamento na função `r colFmt("geom_point()","orange")` recebe a função `r colFmt("aes()","orange")` (de *aesthetics*, estética em inglês), responsável por descrever como as variáveis serão mapeadas nos aspectos visuais da forma geométrica escolhida, no caso, pontos. A combinação da função `r colFmt("ggplot()","orange")` e de uma ou mais funções `r colFmt("geom_()","orange")` definirá o tipo de gráfico gerado.
+
+-   Podemos acrescentar uma terceira camada ao gráfico, agora com uma personalização. Repare como é simples acrescentar *labels* ao gráfico com a função `r colFmt("labs()","orange")`.
+
+```{r, echo=T, out.width='70%'}
+g <- g + labs(x = "Número de lactação", y = "Produção de leite (l)")
+g
+```
+
+-   Ou podemos acrescentar os labels dos eixos como se fossem camadas distintas.
+
+```{r, echo=T, out.width='70%'}
+g <- g + xlab("Número de lactação") + ylab("Produção de leite (l)")
+g
+```
+
+-   A função `r colFmt("aes()","orange")` indica a relação entre os dados e cada aspecto visual do gráfico, como qual variável será representada no eixo $x$, qual será representada no eixo $y$, a cor e o tamanho dos componentes geométricos etc.
+
+-   Outro aspecto que pode ser mapeado nesse gráfico é a cor dos pontos sendo representado pela variável **dyst** (Complicações no parto).
+
+```{r, echo=T, out.width='70%'}
+ggplot(data = banco) + 
+  geom_point(mapping = aes(x = parity , y = milk120, color = dyst))
+```
+
+-   Agora, a variável **mwp** (Período de espera até a concepção) será mapeada segundo à cor dos pontos, sendo representada na tonalidade da cor azul. Note que, por padrão, a legenda é inserida automaticamente ao gráfico.
+
+```{r, echo=T, out.width='70%'}
+ggplot(data = banco) + 
+  geom_point(mapping = aes(x = parity , y = milk120, color = mwp))
+  
+```
+
+-   Mudando a cor dos pontos:
+
+```{r, echo=T, out.width='70%'}
+ggplot(data = banco) + 
+  geom_point(mapping = aes(x = parity , y = milk120, color = mwp)) +
+  scale_color_gradient(low="blue", high="red")
+  
+```
+
+-   Também podemos mapear o tamanho dos pontos a uma variável de interesse:
+
+```{r, echo=T, out.width='70%'}
+ggplot(data = banco) + 
+  geom_point(mapping = aes(x = parity , y = milk120, color = dyst, size = mwp))
+```
+
+
+------------------------------------------------------------------------
+
+# Comparação R base x ggplot2
+
+------------------------------------------------------------------------
+
+## Variável numérica univariada
+
+### milk120 (rbase)
+
+```{r, echo = T, out.width='70%'}
+plot(banco$milk120, xlab = "Index", ylab = "Produção de leite (l)")
+abline(h = mean(banco$milk120, na.rm=T), col="red")
+```
+
+## milk120 (ggplot2)
+
+```{r, echo = T, out.width='70%'}
+p <- ggplot(aes(y=milk120, x=1:nrow(banco)), data = banco)
+p <- p + geom_point() + xlab("Index") + ylab("Produção de leite (l)")
+p + geom_hline(yintercept = mean(banco$milk120, na.rm=T), color = "red")
+```
+
+### Histograma: milk120 (rbase)
+
+```{r, echo = T, out.width='70%'}
+hist( banco$milk120, ylab = "Produção de leite (l)", main = "", nclass = 50)
+abline(v = mean(banco$milk120, na.rm=T), col="red")
+```
+
+### Histograma: IMC (ggplot2)
+
+```{r, echo = T, out.width='70%'}
+p <- ggplot(banco, aes(x = milk120)) 
+p <- p + geom_histogram(bins = 50)
+p + geom_vline(xintercept = mean(banco$milk120, na.rm=T), color = "red") + xlab("Produção de leite (l)") 
+```
+
+------------------------------------------------------------------------
+
+# Variável univariada categórica
+
+### Variável parity categorizada: barplot (r base)
+
+```{r, echo = T, out.width='70%'}
+tbl <- table(banco$parity_cat)
+barplot(tbl, main = "Número de lactações")
+```
+
+### Variável parity categorizada: barplot (ggplot2)
+
+```{r, echo = T, out.width='70%'}
+p <- ggplot(banco, aes(x = parity_cat) ) 
+p + geom_bar() + xlab("Número de lactações") + ylab("")
+```
+
+### Barplot horizontal + frequencia (r base)
+
+```{r, echo = T}
+barplot(prop.table(tbl), horiz = T)
+```
+
+### Barplot horizontal + frequencia (ggplot2)
+
+```{r, echo = T}
+p <- ggplot(banco, aes(x = parity_cat) ) 
+p + geom_bar(aes(y=..count../sum(..count..))) + 
+  xlab("Número de lactações") + coord_flip() + ylab("")
+```
+
+------------------------------------------------------------------------
+
+# Bivariadas: variáveis numéricas
+
+### milk120 x parity (r base)
+
+```{r, echo = T}
+plot(banco$parity, banco$milk120, xlab = "Número de lactação", 
+      ylab = "Produção de leite (l)", cex.lab = 1.5, cex.axis = 1.5)
+title("Produção de leite x Número de lactações")
+
+```
+
+
+### Altura x peso (ggplot2)
+
+```{r, echo=T}
+p <- ggplot(banco, aes(x = parity, y = milk120) )
+p + geom_point() + xlab("Número de lactação") + ylab("Produção de leite (l)")
+```
+
+------------------------------------------------------------------------
+
+# Bivariadas: variável numérica x categórica
+
+### milk120 x dyst: Histograma (r base)
+
+```{r, echo = T, out.width='70%'}
+# Gerando dois histogramas sobrepostos
+hist(banco$milk120[banco$dyst == "Nao"], col=rgb(0,0,1,2/3), xlab = "Produção de Leite (l)", ylab = "Frequencia", main = "", nclass=30)  # first histogram
+hist(banco$milk120[banco$dyst == "Sim"], 
+       col=rgb(1,0,0,2/3), add=T, nclass=30) 
+legend("topright", legend = c("Nao", "Sim"), 
+       fill = c(rgb(0,0,1,2/3), rgb(1,0,0,2/3)))
+```
+
+### milk120 x dyst: Histograma (ggplot2)
+
+```{r, echo = T}
+ggplot(banco, aes(x = milk120)) + 
+    geom_histogram(bins = 30, data=subset(banco, dyst == "Nao"),fill = "blue", alpha = 0.6) +
+    geom_histogram(bins = 30, data=subset(banco, dyst == "Sim"),fill = "red", , alpha = 0.6) +
+    xlab("Produção de Leite (l)") + ylab("Frequencia")
+```
+
+
+### milk120 x dyst: Boxplot (r base)
+
+```{r, echo = T}
+boxplot(milk120 ~ dyst, data = banco, xlab = "Complicações no parto", ylab = "Produção de leite (l)", cex.lab = 1.0, cex.axis = 1.0)
+```
+
+### milk120 x dyst: Boxplot (ggplot2)
+
+```{r, echo=T}
+p <- ggplot(banco, aes(y = milk120, x = dyst))
+p  + geom_boxplot() + xlab("Complicações no Parto") +  ylab("Produção de leite (l)")
+```
+
+
+### milk120 x dyst x rp: Boxplot (ggplot2)
+
+```{r, echo=T}
+p <- ggplot(banco, aes(y = milk120, x = dyst))
+p + geom_boxplot(aes(color=rp)) + xlab("Complicações no parto") + ylab("Produção de leite (l)")
+```
+
+### milk120 x dyst x rp: Violin plot (ggplot2)
+
+```{r, echo=T}
+p <- ggplot(banco, aes(y = milk120, x = dyst, fill=rp))
+p + geom_violin(aes(color=rp)) + xlab("Complicações no parto") + ylab("Produção de leite (l)")
+```
+
+------------------------------------------------------------------------
+
+# Bivariadas: Variáveis categóricas
+
+### parity_cat x dyst: barplot (r base)
+
+```{r, echo=T}
+tbl <- table(banco$dyst, banco$parity_cat)
+barplot(tbl, legend.text = T, beside = T, args.legend =  list(x = "topleft") )
+```
+
+### parity_cat x dyst: barplot (ggplot2)
+
+```{r, echo=T}
+p <- ggplot(banco, aes(x = parity_cat, fill = dyst) ) 
+p + geom_bar(position='dodge') + xlab("Número de lactações") + ylab("")
+```
+
