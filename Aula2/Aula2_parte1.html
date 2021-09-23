@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Regressão Linear Simples</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Prof. Adriana Andrade" />
+    <meta name="author" content="Prof. Wagner Tassinari" />
+    <script src="Aula2_parte1_files/header-attrs-2.10/header-attrs.js"></script>
+    <link href="Aula2_parte1_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Aula2_parte1_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="Aula2_parte1_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="Aula2_parte1_files/fabric-4.3.1/fabric.min.js"></script>
+    <link href="Aula2_parte1_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="Aula2_parte1_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="Aula2_parte1_files/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="Aula2_parte1_files/tile-view-0.2.6/tile-view.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Regressão Linear Simples
+## Aula2 - Parte 1
+### Prof. Adriana Andrade
+### Prof. Wagner Tassinari
+### Programa de Pós-Graduação em Medicina Veterinária - UFRRJ
+### 2021/11
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Introdução - Modelagem Estatística
+
+
+Na produção de evidências estatísticas que corroboram ou não nossas hipóteses de estudo, é comum a elaboração de modelos que possibilitam uma compreensão do fenômeno de interesse.
+
+
+
+--
+
+Nesse contexto, o modelo é uma representação matemática de um fenômeno: `\(Y= f(x)\)`, onde `\(Y\)` representa o desfecho de interessse e `\(f(x)\)` uma função que relaciona com valores de uma ou mais variáveis explicativas `\(X\)` com valores de `\(Y\)`.
+
+--
+
+O objetivo é verificar como ocorrem variações em `\(Y\)` de acordo com os valores de `\(X\)`.
+
+---
+
+# Introdução - Modelagem Estatística
+
+No âmbito da Estatística, iremos adotar o uso de modelos probabilistícos, os quais reconhecem que o desfecho de interesse pode ser afetado por fatores não controlados pelo pesquisador, de forma que:
+
+`$$Y= f(x)+\varepsilon$$`
+
+
+onde `\(\varepsilon\)` representa as fontes de variação não controladas e, portanto, de natureza aleatória.
+
+
+---
+# Introdução - Modelagem Estatística
+
+**Epatas da Modelagem Estatística**
+
+1. Definição das hipóteses;
+2. Coleta e preparação dos dados;
+3. Seleção das variáveis regressoras ou preditores (Modelo Teórico);
+4. Ajuste do modelo;
+5. Diagnóstico para verificar se o modelo ajustado está adequado;
+6. Aplicar medidas remediadoras (corretivas) quando as condições do modelo não são satisfeitas;
+7. Verificar a qualidade do modelo ajustado;
+8. Validação dos modelos.
+
+---
+# Introdução - Modelagem Estatística
+
+
+
+&lt;img src="figuras/modelagem.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Introdução - Modelo de Regressão Linear
+
+A análise de regressão é uma metodologia estatística que investiga a relação entre uma variável quantitativa e uma ou mais variáveis quantitativas ou qualitativas, de tal forma que uma variável pode ser predita a partir de outras variáveis;
+
+--
+
+O modelo de regressão linear nos permite avaliar variações na variável resposta a partir de mudanças na variável explicativa;
+
+--
+
+Essa técnica se apoia na correlação existente entre as variáveis e propõe uma representação matemática de uma realidade ou fenômeno de interesse.
+
+
+---
+# Introdução - Modelo de Regressão Linear
+
+Exemplos
+
+- População de bactérias pode ser predita a partir da relação entre a população e o tempo de armazenamento;
+- Período de espera até a lactação associado com problemas no parto;
+- Relação entre número de carrapatos e a temperatura;
+- Ganho de pesos em ratos relacionado com a quantidade de proteínas ingerida.
+
+---
+
+# Exemplo
+
+Um veterinário acredita que uma substância adicionada ao pasto pode melhorar o ganho de peso dos bovinos. Foram escolhidos 10 animais de mesma raça e idade para serem submetidos a esse esquema de alimentação com concentrações distintas da substância (mg/l). O ganho de peso (em kg) após 30 dias é apresentado na Tabela 1.
+
+---
+
+# Exemplo
+
+
+| Substância | Peso |
+|:----------:|:----:|
+|    0.2     | 9.4  |
+|    0.5     | 11.4 |
+|    0.6     | 12.3 |
+|    0.7     | 10.2 |
+|    1.0     | 11.9 |
+|    1.5     | 13.6 |
+|    2.0     | 14.2 |
+|    2.5     | 16.2 |
+|    3.0     | 16.2 |
+|    3.5     | 17.7 |
+
+---
+
+# Exemplo
+
+Uma maneira de avaliar a associação entre essas duas variáveis pode ser realizada a partir da análise do diagrama de dispersão  e da correlação linear de Pearson entre as duas variáveis.
+
+
+---
+
+
+# Exemplo
+
+&lt;img src="Aula2_parte1_files/figure-html/dispersão ex_1-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Exemplo
+
+
+Uma outra forma de avaliar a associação entre as variáveis poderia ser pela estimação de um modelo de regressão linear simples para esse conjunto de dados.
+
+
+---
+# Objetivos da Regressão
+
+
+- Predição  
+- Seleção de variáveis
+- Estimação de parâmetros
+- Inferência
+    
+
+---
+
+# Forma Geral do Modelo de Regressão
+
+O modelo de regressão relaciona as variáveis de interesse a partir de uma forma funcional:
+
+`$$Y = f(x) + \varepsilon$$`
+
+Onde:
+
+
+`\(Y\)`: variável dependente (resposta ou desfecho);
+
+`\(X\)`: variável independente (explicativa, covariável ou preditora);
+
+`\(f\)`: descreve a relação entre x e y (componente sistemático);
+
+`\(\varepsilon\)`: erro aleatório (componente aleatório).
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

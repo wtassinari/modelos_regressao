@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Regressão Linear Simples</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Prof. Adriana Andrade - Prof. Wagner Tassinari" />
+    <script src="Aula2_parte3_files/header-attrs-2.10/header-attrs.js"></script>
+    <link href="Aula2_parte3_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Aula2_parte3_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="Aula2_parte3_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="Aula2_parte3_files/fabric-4.3.1/fabric.min.js"></script>
+    <link href="Aula2_parte3_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="Aula2_parte3_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="Aula2_parte3_files/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="Aula2_parte3_files/tile-view-0.2.6/tile-view.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Regressão Linear Simples
+## Aula 2 - Parte 3
+### Prof. Adriana Andrade - Prof. Wagner Tassinari
+### Programa de Pós-Graduação em Medicina Veterinária - UFRRJ
+### 2021/11
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Estimação dos Parâmetros do MRLS
+
+A estimação dos parâmetros  `\(\beta_0\)` e  `\(\beta_1\)` do MRLS, geralmente, é realizada pelo Método dos Mínimos Quadrados (MMQ) que se baseia na ideia de que a soma dos quadrados das distâncias de cada valor observado `\(y_i\)` em relação seu correspondente `\(\hat{y}_i\)` na reta estimada deve ser mínima.
+
+---
+
+# Estimação dos Parâmetros do MRLS
+
+Essa distância entre `\(y_i\)` e `\(\hat{y}_i\)` é denominada de resíduo `\(e_i\)`, e representa o erro cometido na estimação conforme se observa na Figura.
+
+**Resíduos do MRLS**
+&lt;img src="figuras/figRegRes1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Estimação dos Parâmetros do MRLS
+
+Portanto os resíduos do MRLS que expressam a diferença entre os valores observados e os valores ajustados são obtidos por:
+
+`\(e_i = y_i-\hat{y}_i = y_i - (\hat{\beta_0}+\hat{\beta}_1 X_i)\)`
+
+---
+
+# Estimação dos Parâmetros do MRLS
+
+Note que alguns resíduos podem ser positivos e outros negativos, então, uma forma de minimizar todos os resíduos simultaneamente é minimizando uma função desses resíduos. 
+
+O método dos Mínimos Quadrados busca encontrar estimadores de `\(\beta_0\)` e `\(\beta_1\)` que minimizam a soma dos quadrados dos resíduos.
+
+Seja `\(\displaystyle L = \sum_{i=1}^n{e_i^2} = \sum_{i=1}^n{\left(y_i- ({\beta_0}+{\beta_1}x_i)\right)^2} = \sum_{i=1}^n{\left(y_i- {\beta_0}-{\beta_1}x_i\right)^2}\)`
+
+
+---
+# Estimação dos Parâmetros do MRLS
+
+Derivando `\(L\)` em relação a `\(\beta_0\)` e `\(\beta_1\)` temos
+
+
+`\(\dfrac {\partial L}{\partial \beta_0} = \dfrac {\partial (y_i-\beta_0-\beta_1x_i)^2}{\partial \beta_0} = -2\sum_{i=1}^{n}(y_i-\beta_0 - \beta_1x_i)\)` 
+
+
+
+`\(\dfrac {\partial L}{\partial \beta_1} = \dfrac {\partial \left(y_i- \beta_0-\beta_1x_i\right)^2}{\partial \beta_1}\)`
+	`\(= -2x_i \sum_{i=1}^{n}\left(y_i-\beta_0-\beta_1x_i\right)\)`
+	
+---
+
+# Estimação dos Parâmetros do MRLS
+
+Igualando essas equações a zero e desenvolvendo resulta em:
+
+`\(n\beta_0+\beta_1\sum_{i=1}^{n}x_i = \sum_{i=1}^{n}y_i\)`
+
+
+`\(\beta_0\sum_{i=1}^{n}x_i+\beta_1\sum_{i=1}^{n}x_i^2 = \sum_{i=1}^{n}x_iy_i\)`
+
+---
+
+# Estimação dos Parâmetros do MRLS
+
+Resolvendo as equações para `\(\beta_0\)` e `\(\beta_1\)` obtemos os valores que minimizam a soma do quadrado dos resíduos
+
+`\(\hat{\beta}_1= \frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^{n}(x_i-\bar{x})^2} = \frac{ \sum_{i=1}^{n}x_iy_i - n\bar{x}\bar{y}}{\sum_{i=1}^{n} x^2_i - n\bar{x}^2}\)`
+
+
+`\(\hat{\beta}_0=\bar{y}+\hat{\beta}_1\bar{x}\)`
+
+---
+
+# Estimação dos Parâmetros do MRLS
+
+Uma vez obtidos os valores de `\(\hat{\beta_0}\)` e `\(\hat{\beta_1}\)` , pode-se calcular uma estimativa para os resíduos do modelo.
+
+`$$\hat{e}_i = y_i-\hat{\beta}_0-\hat{\beta}_1x_i$$`
+
+---
+
+# Exemplo 1
+
+
+Um veterinário acredita que uma substância adicionada ao pasto pode melhorar o ganho de peso dos bovinos. Foram escolhidos 10 animais de mesma raça e idade para serem submetidos a esse esquema de alimentação com concentrações distintas da substância (mg/l). O ganho de peso (em kg) após 30 dias é apresentado na Tabela.
+
+---
+
+# Exemplo 1
+
+
+| Substância | Peso |
+|:----------:|:----:|
+|    0.2     | 9.4  |
+|    0.5     | 11.4 |
+|    0.6     | 12.3 |
+|    0.7     | 10.2 |
+|    1.0     | 11.9 |
+|    1.5     | 13.6 |
+|    2.0     | 14.2 |
+|    2.5     | 16.2 |
+|    3.0     | 16.2 |
+|    3.5     | 17.7 |
+
+---
+
+# Exemplo 1
+
+1. Encontre a reta de regressão pelo Método dos Mínimos Quadrados.
+2. Determine os valores calculados e os resíduos.
+
+---
+
+# Exemplo 1	
+
+Tabela Auxiliar
+
+&lt;img src="figuras/tab_aux_1.png" width="40%" style="display: block; margin: auto;" /&gt;
+---
+
+# Exemplo 1
+
+Médias
+
+`\(\bar{x}=\sum_{i=1}^{n} = \frac{15.5}{10}= 1.55\)`
+
+
+
+`\(\bar{y}=\sum_{i=1}^{n} = \frac{133.1}{10}= 13.31\)`
+
+---
+
+# Exemplo 1
+
+
+**Estimação dos parâmetros**
+
+`\(\displaystyle \hat{\beta_1}=  \frac{ \sum_{i=1}^{n}x_iy_i - n\bar{x}\bar{y}}{\sum_{i=1}^{n} x^2_i - n\bar{x}^2} = \frac{233,85-(10\times1,55\times13,31)}{35,89-(10\times2,40)^2}=2,32\)`
+
+
+
+`\(\displaystyle \hat{\beta_0}=\bar{y}+\hat{\beta_1}\bar{x} = 13,31-(2,32\times1,55)= 9,71\)`
+
+---
+
+# Exemplo 1
+
+**1 - Reta Estimada**
+
+`\(\hat{y} = 9,71 + 2,32X\)`
+
+O coeficiente estimado `\(\hat{\beta}_0 = 9,74\)` indica que em média, há um ganho de peso de 9,74 kg no período de 30 dias quando não se utiliza a substância testada na alimentação.
+
+
+O coeficiente estimado `\(\hat{\beta}_1 = 2,32\)` indica que a cada mg/l de substância adicionada ao pasto, observa-se um aumento no de 2,32 kg no ganho de peso em 30 dias. 
+
+---
+
+# Exemplo 1
+
+
+**2 - Estimação dos Resíduos**
+
+Na Tabela a seguir foram obtidos os resíduos que representam a diferença entre o valor observado de peso e o valor predito pelo modelo: `\(y_i - \hat{y}_i\)`.
+
+---
+
+**Tabela  - Resíduos**
+
+
+
+|  y   | Predito | Resíduo |
+|:----:|:-------:|:-------:|
+| 9.4  |  10.18  |  -0.78  |
+| 11.4 |  10.87  |  0.53   |
+| 12.3 |  11.10  |  1.20   |
+| 10.2 |  11.34  |  -1.14  |
+| 11.9 |  12.03  |  -0.13  |
+| 13.6 |  13.19  |  0.41   |
+| 14.2 |  14.35  |  -0.15  |
+| 16.2 |  15.52  |  0.68   |
+| 16.2 |  16.68  |  -0.48  |
+| 17.7 |  17.84  |  -0.14  |
+
+---
+
+# Exemplo 1
+
+**Diagrama de dispersão Peso x Substância com reta de regressão**
+
+&lt;img src="Aula2_parte3_files/figure-html/diagrama com reta ex_1-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Exemplo 1
+
+*Resíduos da Regressão*
+
+&lt;img src="Aula2_parte3_files/figure-html/diagrama resíduos-1.png" style="display: block; margin: auto;" /&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

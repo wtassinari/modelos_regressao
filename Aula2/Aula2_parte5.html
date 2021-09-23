@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Regressão Linear Simples</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Prof. Adriana Andrade - Prof. Wagner Tassinari" />
+    <script src="Aula2_parte5_files/header-attrs-2.10/header-attrs.js"></script>
+    <link href="Aula2_parte5_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Aula2_parte5_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="Aula2_parte5_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="Aula2_parte5_files/fabric-4.3.1/fabric.min.js"></script>
+    <link href="Aula2_parte5_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="Aula2_parte5_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="Aula2_parte5_files/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="Aula2_parte5_files/tile-view-0.2.6/tile-view.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Regressão Linear Simples
+## Aula 2 - Parte 5
+### Prof. Adriana Andrade - Prof. Wagner Tassinari
+### Programa de Pós-Graduação em Medicina Veterinária - UFRRJ
+### 2021/11
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+# A abordagem da Análise de Variância para testar a significância de regressão 
+
+
+A análise da variância é uma outra forma de avaliar a significância da regressão, nesse contexto, passa a ser denominada de ANOVA da regressão.
+
+--
+
+Esse método consiste em decompor a variabilidade total da variável resposta `\(Y\)`.
+
+---
+
+# A abordagem da Análise de Variância para testar a significância de regressão 
+
+
+**Representação geométrica da decomposição da variabilidade da variável resposta `\(Y\)`**
+
+&lt;img src="figuras/figAnovaGraf2.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+# A abordagem da Análise de Variância para testar a significância de regressão 
+
+Identidade da Análise da Variância:
+`\(SQT = SQR + SQE\)`
+
+--
+
+onde:
+
+**SQT** - representa a variabilidade  dos valores de `\(Y\)` ao redor da sua média. Denominada de Soma de Quadrados Total;
+
+--
+
+
+**SQR** - representa a quantidade de variabilidade em `\(Y\)` explicada pela reta de regressão. Denominada de Soma de Quadrados da Regressão;
+
+--
+
+
+**SQE** - representa a variação residual não explicada pela reta de regressão. Denominada de Soma de Quadrados do Erro. 
+
+---
+	
+	
+# A abordagem da Análise de Variância para testar a significância de regressão 
+
+Assim sendo, a identidade da ANOVA da regressão pode ser reescrita da seguinte forma:
+
+`\(\sum_{i=1}^{n}(y_i-\bar{y})^2 = \sum_{i=1}^{n}(\hat{y_i}-\bar{y})^2 + \sum_{i=1}^{n}(y_i-\hat{y_i})^2\)`
+
+
+---
+
+# A abordagem da Análise de Variância para testar a significância de regressão 
+
+A partir dessa decomposição da variabilidade será possível realizar alguns testes com o intuito de verificar a significância dessas quantidades. 
+
+---
+
+
+# A abordagem da Análise de Variância para testar a significância de regressão 
+
+Para estabelecer os graus de liberdade (gl) associados às Somas de Quadrados, é preciso levar em contas as estimativas envolvidas em suas respectivas expressões.De modo que:
+
+**SQT**: considera apenas a média de Y, portanto, tem `\((n-1)\)` `\((g.l.)\)`;
+
+--
+
+**SQE**: envolve duas estimativas `\(\hat{\beta_0}\)` e `\(\hat{\beta_1}\)`, então possui `\((n-2) g.l.\)`
+
+--
+
+**SQR**: obtida a partir da diferença entre `\(SQT\)` e `\(SQE\)`, `\((n-1)-(n-2) = 1 g.l.\)`
+
+---
+
+
+# A abordagem da Análise de Variância para testar a significância de regressão 
+
+A partir das Somas de Quadrados e de seus respectivos números de graus de liberdades pode-se definir os Quadrados Médios.
+
+QMT = `\(\frac{SQT}{n-1}\)`
+
+
+QME = `\(\frac{SQE}{n-2}\)`
+
+
+QMR = `\(\frac{SQM}{1}\)`
+
+
+---
+
+
+# A abordagem da Análise de Variância para testar a significância de regressão 
+
+Note que:
+ 
+
+`\(QMT\)` = `\(\frac{SQT}{n-1} = \frac{\sum_{i=1}^{n}(y_i-\bar{y})}{n-1} = S^2\)`, é o estimador da variância de `\(Y\)`, isto é, `\(\sigma^2_Y\)`.
+
+--
+
+`\(QME\)` = `\(\frac{SQE}{n-2} = \frac{\sum_{i=1}^{n(y_i-\hat{y_i})}}{n-2} = \hat{\sigma^2}\)`, estimador da variância de `\(Y\)` para `\(x\)` fixo.
+
+
+---
+
+# A abordagem da Análise de Variância para testar a significância de regressão 
+
+Com base nessas informações é possível construir a tabela da análise da variância – ANOVA (ANalysis Of VAriance) com os valores necessários para realização da estatística de teste. De acordo com a identidade da ANOVA, temos que:
+
+
+
+| Fonte de Variação    | Gl    | SQ   | `\(QM\)`   | `\(F_0\)`    |
+|------------|------|-----|------|------|
+| Regressão   |  1        | `\(SQR\)`     | `\(QMR\)`          | `\(\frac{QMR}{QME}\)`  |
+| Erro        |   `\(n-2\)`   |   `\(SQE\)`   |  `\(QME/(n-2)\)`   |  `\(-\)`    |
+| Total       |   `\(n-1\)`   |  `\(SQT\)`    |   `\(-\)`          |   `\(-\)`   |
+
+
+
+
+
+---
+
+
+# A abordagem da Análise de Variância para testar a significância de regressão 
+
+A tabela da ANOVA fornece o valor da estatística de teste `\(F_0\)` relacionada as seguintes hipóteses:
+
+
+`\(H_0: \beta_1 = 0\)`
+	
+	
+`\(H_1: \beta_1\neq 0\)`
+
+
+Rejeita-se `\(H_0\)` se `\(F_0 &gt; F_{\alpha,1,n-2}\)`.
+
+--
+
+Um outro modo pelo qual é possível realizar a rejeição de `\(H_0\)` ocorre quando o `\(valor-p\)` for muito pequeno. 
+
+---
+
+
+# A abordagem da Análise de Variância para testar a significância de regressão
+
+
+
+A rejeição de `\(H_0: \beta_1 = 0\)` ocorrerá para valores relativamente altos de `\(SQR\)`, e, consequentemente, `\(SQE\)` relativamente menores, com base na decomposição da variância. 
+
+Portanto, o teste de significância do parâmetro `\(\beta_1\)` equivale à comparação de variâncias.
+
+
+
+---
+
+# Exemplo 1
+
+
+Um veterinário acredita que uma substância adicionada ao pasto pode melhorar o ganho de peso dos animais Foram escolhidos 10 bois de mesma raça e idade para serem submetidos a esse esquema de alimentação com concentrações distintas da substância (mg/l). O ganho de peso (em kg) após 30 dias é apresentado na Tabela 1.
+
+---
+# Exemplo 1
+
+
+Table: Peso de bovinos segundo quantidade de substância no pasto
+
+| Substância | Peso |
+|:----------:|:----:|
+|    0.2     | 9.4  |
+|    0.5     | 11.4 |
+|    0.6     | 12.3 |
+|    0.7     | 10.2 |
+|    1.0     | 11.9 |
+|    1.5     | 13.6 |
+|    2.0     | 14.2 |
+|    2.5     | 16.2 |
+|    3.0     | 16.2 |
+|    3.5     | 17.7 |
+
+
+
+---
+
+
+# Exemplo
+
+
+
+**Tabela Anova**
+
+| Fonte de Variação | `\(gl\)`   | `\(SQ\)`     | `\(QM\)`    | `\(F_0\)`     |
+|-------------------|------|------------|---------|-----------|
+| Regressão         |  1   | 63.947     | 63.947  | 113.12    |
+| Erro              |  8   |  4.522     |  0.565  | 5.347e-06 |
+| Total             |  9   |  68.469    |   `\(-\)`   |   `\(-\)`     |
+
+
+
+De acordo com os dados da tabela ANOVA, percebemos que o modelo de regressão com a variável substância corresponde a uma redução na ordem de `\(63.947\)` da soma de quadrados total que é igual a `\(68.469\)`. 
+
+--
+
+O valor assumido pela estatística `\(F\)` com base no valor p é bem inferior ao nível de significância de `\(1%\)`, o que nos permite concluir pela significância do modelo baseado na quantidade utilizada da substância para predizer o ganho de peso dos animais.
+
+
+---
+
+
+# Qualidade do Ajuste
+
+A `\(SQE\)` fornece uma medida de qualidade do ajuste do MRLS, pois quanto menor for essa quantidade melhor será o ajuste do modelo aos valores observados. 
+
+--
+
+Suponha que os valores de `\(Y\)`, obtidos pela reta estimada, coincidam com os seus respectivos valores observados, portanto, `\(y_i=\hat{y_i}\)`. Neste caso, a `\(SQE = 0\)`, pois o ajuste seria perfeito, e `\(SQT=SQR\)`	ou  `\(SQR/SQT = 1\)`.
+
+
+---
+
+# Qualidade do Ajuste
+
+Quando a `\(SQE\neq 0\)`, tem-se que a `\(SQR &lt; SQT\)`. No entanto, quanto mais próximos estiverem `\(SQR\)` e `\(SQT\)`, menor será a `\(SQE\)`, e, consequentemente melhor será o ajuste do modelo. 
+
+Quanto mais próximo de `\(SQR\)` de `\(SQT\)`, o valor de `\(SQT/SQR\)` maior a varibabilidade explicada pelo modelo. Por essa razão, `\(SQT/SQR\)` fornece uma medida da qualidade de ajuste do modelo.
+
+
+---
+
+# Qualidade do Ajuste
+
+**Coeficiente de Determinação**
+
+O Coeficiente de Determinação `\((R^2)\)` é uma medida obtida pela comparação entre a `\(SQR\)` e `\(SQT\)` que possibilita a avaliação da qualidade de ajuste do modelo, bem como possibilita a comparação entre modelos.
+
+`\(R^2 = \rho^2 =\hat{\beta_1}\left[\frac{S_{XX}}{S_{YY}}\right] = \frac{SQR}{SQT} = \frac{\sum_{i=1}^{n}(\hat{y_i}-\bar{y})}{\sum_{i=1}^{n}(y_i-\bar{y})}\)`
+
+
+---
+
+# Qualidade do Ajuste
+
+**Coeficiente de Determinação**
+
+O valor de `\(R^2\)`, geralmente, é interpretado como a quantidade de variação nos dados explicada pelo modelo de regressão. Assim sendo, quando o valor de `\(R^2\)` for próximo de zero, o modelo de regressão não é adequado. Caso `\(R^2\)` reporte um valor próximo a um, o modelo de regressão pode ser adequado.
+
+
+---
+
+# Exemplo
+
+Para o exemplo que relaciona o ganho de peso com a substância adicionada ao pasto, tem-se que:
+
+`\(R^2 =  \frac{SQR}{SQT} = \frac{63.946}{68.469}=0.93\)`
+
+
+O valor do Coeficiente de Determinação para o modelo que relaciona o peso dos bovinos com a quantidade de substância é de 0,93. Ou seja, 93\% da variabilidade da variável resposta ganho de peso dos bovinos pode ser explicada pela variável quantidade de substância.
+		
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

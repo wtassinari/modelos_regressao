@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Regressão Linear Simples</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Prof. Adriana Andrade - Prof. Wagner Tassinari" />
+    <script src="Aula2_parte6_files/header-attrs-2.10/header-attrs.js"></script>
+    <link href="Aula2_parte6_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Aula2_parte6_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="Aula2_parte6_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="Aula2_parte6_files/fabric-4.3.1/fabric.min.js"></script>
+    <link href="Aula2_parte6_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="Aula2_parte6_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="Aula2_parte6_files/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="Aula2_parte6_files/tile-view-0.2.6/tile-view.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Regressão Linear Simples
+## Aula 2 - Parte 6
+### Prof. Adriana Andrade - Prof. Wagner Tassinari
+### Programa de Pós-Graduação em Medicina Veterinária - UFRRJ
+### 2021/11
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Adequação do Ajuste
+
+Após a realização do ajuste do modelo com a estimação dos parâmetros de interesse e a realização dos testes de hipóteses, a próxima etapa da modelagem diz respeito à verificação dos pressupostos relacionados a esse ajuste. 
+
+---
+#  Adequação do Ajuste
+
+**Análise da Violação das Suposições**
+
+Serão verificadas as seguintes suposições básicas do MRLS: 
+
+- Relação linear entre as variáveis `\(X\)` e `\(Y\)`;
+- Normalidade de `\(e_i\)`, `\(i = 1, 2, ..., n\)`;
+- Homocedasticidade das variâncias de `\(e_i\)`;
+- Independência das variáveis de erro.
+
+---
+#  Adequação do Ajuste
+
+**Análise da Violação das Suposições: Linearidade**
+
+Representa a forma da relação entre as variáveis dependente e independente, que supõe uma relação linear entre as variáveis `\(X\)` e `\(Y\)`.
+
+As variáveis podem estar associadas, mas sem uma relação linear. 
+
+A não observância dessa suposição pode produzir estimativas tendenciosas.
+
+---
+
+#  Adequação do Ajuste
+
+**Análise da Violação das Suposições: Homocedasticidade**
+
+Quando a variância não é constante entre os diferentes valores de `\(X\)`. 
+
+Assim, espera-se que os resíduos não tenham nenhuma tendência com a variável `\(X\)`.
+
+A não adequação do modelo devido a heterocedasticidade pode gerar parâmetros menos eficiente.
+
+---
+
+#  Adequação do Ajuste
+
+**Análise da Violação das Suposições: Normalidade**
+
+O MRLS tem como uma de suas premissas o requisito de que `\(\varepsilon_i\)` `\(\sim N(0;\sigma_\epsilon^2)\)`. 
+
+Desvios da normalidade afetam os intervalos de confiança, os testes `\(t\)` e `\(F\)`. 
+
+---
+
+#  Adequação do Ajuste
+
+**Análise da Violação das Suposições: Independência**
+
+A suposição de independência é verificada quando as unidades amostrais são independentes. 
+
+Está relacionada com a maneira pela qual os dados foram obtidos, ou seja, com as informações sobre o plano amostral. 
+
+A correlação entre os resíduos é um problema que pode surgir quando as observações são efetuadas ao longo do tempo ou ainda ser decorrente de uma autocorrelação espacial.
+
+---
+
+# Análise de Resíduos
+
+Adequação do ajuste será avaliada através da análise dos resíduos do modelo ajustado.
+
+--
+
+Os resíduos do modelo de regressão linear, definidos por `\(e_i = y_i - \hat{y_i}\)` assumem um importante papel no julgamento da adequação do modelo. 
+
+Violações nas suposições sobre esses termos terá consequências diretas na confiabilidade dos testes estatísticos sobre os parâmetros do modelo.
+
+---
+
+# Análise de Resíduos
+
+### Resíduos ordinários
+
+Os resíduos do processo de ajuste por mínimos quadrados são dados por:
+
+`\(e_i = \hat{\varepsilon_i} = y_i - \hat{y_i}\)`
+
+---
+
+
+# Análise de Resíduos
+
+### Resíduos Padronizados
+
+O objetivo dessa transformação reside em obter uma variável aleatória com esperança igual a zero e desvio padrão igual a um.
+
+O resíduo padronizado é obtido pela divisão dos resíduos ($e_i$) pela raiz quadrada do quadrado médio do erro (QMR). 
+
+`\(d_i = \frac{e_i}{\sqrt{QME}} = \frac{e_i}{\sqrt{\hat{\sigma^2}}}\)`
+		
+
+---
+
+# Análise Gráfica dos Resíduos
+
+Um recurso frequentemente utilizado na verificação dos pressupostos do modelo é obtido pela elaboração de gráficos que buscam realizar uma análise visual dos padrões exibidos, sobretudo, pelos resíduos. Dentre os gráficos empregados para esse fim, encontram-se:
+- Boxplot
+- QQnorm
+- Diagrama de Dispersão
+
+---
+
+# Análise Gráfica dos Resíduos
+
+**1 - Boxplot dos Resíduos**
+
+Possibilita a verificação da suposição da normalidade dos erros e a identificação de outliers.
+
+---
+
+# Análise Gráfica dos Resíduos 
+
+**2 - Gráficos normal de probabilidades (QQnorm)**
+
+Compara a função de distribuição acumulada empírica na abcissa com a função de distribuição acumulada da Normal como ordenada. 
+
+--
+
+No gráfico QQnorm dos resíduos de um ajuste adequado, os pontos estão alinhados na reta que	representa a identidade dos quantis amostrais e teóricos. Afastamentos desse padrão evidencia que os resíduos não estão normalmente distribuídos.
+
+---
+
+# Análise Gráfica dos Resíduos 
+
+A Figura apresenta o gráfico QQnorm de para os resíduos de um modelo bem ajustado enquanto o outro gráfico revela uma assimetria positiva nos resíduos.
+
+**QQnorm - Resíduos do MRLS**
+Padrões encontrados em Diagramas de Gráficos QQnorm dos Resíduos de MRLS
+&lt;img src="figuras/figQQnormRes.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Análise Gráfica dos Resíduos 
+
+
+**3 - Diagramas de Dispersão dos Resíduos vs valores ajustados**
+
+
+Possibilita verificar suposições de violação da homocedasticidade das variâncias, detectar não-linearidade entre X e Y e detectar prováveis valores atípicos. 
+
+--
+
+O padrão para esse tipo de gráfico é uma distribuição aleatória de média 0 e amplitude constante.Desvios sistemáticos podem indicar:
+- heterogeneidade de variâncias (formato de "megafone")
+- não-linearidade entre X e Y (formato de parábola, ou algum formato que indique alguma transformação ou adição de termo de quadrático ou de grau superior).    
+
+
+---
+
+# Análise Gráfica dos Resíduos
+
+A Figura ilustra padrões frequentemente encontrados na análise dos diagramas de dispersão entre os resíduos e os valores ajustados.
+
+&lt;img src="figuras/figGrafRes1.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+# Testes 
+
+
+2) Testes estatísticos (Shapiro-Wilk, Kolmogorov-Smirnov, Anderson Darling - nesses testes a hipótese nula estabelece que os dados são provenientes de uma distribuição Normal.)
+
+
+---
+
+#Transformação de Variáveis
+
+Tendo constatado a violação de alguma suposição na etapa de Análise de Resíduos, existe a possibilidade de aplicar uma transformação na variável resposta Y. 
+
+Essas transformações buscam  normalizar a variável resposta bem como estabilizar as variâncias dos erros.
+
+---
+
+#Transformação de Variáveis
+
+- `\(Log(Y)\)` – essa transformação estabiliza a variância, quando essa tende a crescer à medida que Y também cresce. Pode em algumas situações ajudar a normalizar os dados.
+
+- `\(Y^2\)` - estabiliza a variância quando essa tende a decrescer com a média dos Y’s. Normaliza os dados quando os resíduos se mostram com assimetria negativa. Lineariza os dados quando esses apresentam uma relação curvilínea.
+
+- `\(\sqrt Y\)`  e `\(1/Y\)` – estabilizam a variância.
+
+---
+
+#Transformação de Variáveis
+
+**Transformação de Box-Cox**
+
+Box e Cox (1964) propuseram uma família de transformações dada pela equação:
+
+`$$Y(\lambda) = \frac{Y^{\lambda -1}}{\lambda}, \lambda \neq 0$$`
+
+sendo `\(\lambda\)` o parâmetro da transformação e `\(Y\)` a variável resposta. Na ausência de uma transformação, `\(\lambda = 1\)`.
+
+---
+
+#Transformação de Variáveis
+
+**Transformação de Box-Cox**
+
+Dependendo do valor de `\(\lambda\)`, a transformação Box-Cox inclui os seguintes casos especiais:
+
+
+	\caption{Valores de `\(\lambda\)` e transformações em `\(Y\)`}
+
+	
+	|$\lambda$        | Transformações em `\(Y\)` |
+	|-----------------|----------------------------|
+	|	`\(\lambda = -1\)`  |  `\(Y(\lambda) = \frac{1}{Y}\)`|
+	|	`\(\lambda = -0,5\)`|  `\(Y(\lambda) = \frac{1}{\sqrt{Y}}\)` |
+	|	`\(\lambda = 0\)`   |   `\(Y(\lambda) =  ln(Y)\)` |
+	|	`\(\lambda = 0,5\)` |  `\(Y(\lambda) =   \sqrt{Y}\)` |
+  |	`\(\lambda = 2\)`   |   `\(Y(\lambda) =   Y^2\)` |
+
+---
+#Transformação de Variáveis
+
+**Transformação de Box-Cox**
+
+O método mais usado para a estimação do parâmetro `\(\lambda\)` é o método do perfil de verossimilhança. 
+
+Uma vez obtido o valor de `\(\lambda\)` encontramos os valores dos dados transformados e utilizamos estes dados transformados para efetuar as análises.
+
+No software R a função boxcox() do pacote MASS calcula a verossimilhança perfilhada do parâmetro `\(\lambda\)`. Devemos escolher o valor que maximiza esta função. 
+
+---
+Na figura, por exemplo, o valor de `\(\lambda\)` que maximiza a função de verossimilhança é aproximadamente `\(0,74\)`.
+
+
+&lt;img src="figuras/figBoxcox2.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

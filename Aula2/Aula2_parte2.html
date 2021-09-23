@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Regressão Linear Simples</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Prof. Adriana Andrade" />
+    <meta name="author" content="Prof. Wagner Tassinari" />
+    <script src="Aula2_parte2_files/header-attrs-2.11/header-attrs.js"></script>
+    <link href="Aula2_parte2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Aula2_parte2_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="Aula2_parte2_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="Aula2_parte2_files/fabric-4.3.1/fabric.min.js"></script>
+    <link href="Aula2_parte2_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="Aula2_parte2_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="Aula2_parte2_files/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="Aula2_parte2_files/tile-view-0.2.6/tile-view.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Regressão Linear Simples
+## Aula 2 - Parte 2
+### Prof. Adriana Andrade
+### Prof. Wagner Tassinari
+### Programa de Pós-Graduação em Medicina Veterinária - UFRRJ
+### 2021/11
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Forma do Modelo de Regressão Linear Simples
+
+
+O Modelo de regressão linear simples  (MRLS) expressa a relação entre duas variáveis quantitativas `\(X\)` e `\(Y\)` , de modo que se obtenha o valor esperado de `\(Y\)` para cada valor de `\(X\)`, ou seja, `\(E(Y|x)\)`. 
+
+
+---
+
+
+# Forma do Modelo de Regressão Linear Simples
+
+Essa técnica possibilita estimar a magnitude do efeito de `\(X\)` em `\(Y\)` a partir de uma função linear: 
+
+
+`$$Y_i=\beta_{0}+\beta_{1}X_i+\varepsilon_i$$`
+
+
+Onde:
+
+
+  - `\(\beta_{0}\)` - intercepto do modelo. Geralmente, não é interpretado. Representa o valor esperado de `\(Y\)` quando `\(X = 0\)`;
+  
+  - `\(\beta_{1}\)` - representa o acréscimo esperado na variável resposta quando a variável explicativa é acrescida de uma unidade;
+  
+  - `\(\varepsilon_i\)` – erro aleatório. Esse termo representa os fatores não incluídos no modelo que, de alguma forma, causam variação em `\(Y\)`, ou seja, corresponde a variação em `\(Y\)` que não é causada por `\(X\)`.
+
+
+---
+
+# Interpretação do MRLS
+
+
+O MRLS pode ter sua forma divida em duas partes:
+	
+- Parte Sistemática: `\(\beta_{0}+\beta_{1}X_i\)`
+	
+- Parte Aleatória: `\(\varepsilon_i\)`
+
+
+---
+	
+# Parte Sistemática do modelo
+
+
+A componente sistemática, que pode ser interpretada geometricamente como uma reta em função de `\(X\)`, representa a informação sobre `\(Y\)` que poderíamos esperar apenas com o conhecimento da variável `\(X\)`.
+
+ 
+---
+
+# Parte Sistemática do modelo
+**Reta do Modelo de Regressão Simples**
+
+&lt;img src="figuras/figRegBeta1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Parte Sistemática do modelo
+
+### Comportamento da reta do MRLS de acordo com o valor de `\(\beta_1\)`
+
+
+
+O valor de `\(\beta_1\)` é o tamanho do grau de inclinação da reta de regressão e representa  a variação na média de `\(Y\)` dado um valor de `\(x\)`. 
+
+--
+
+Quanto maior for o seu valor em módulo, maior será a inclinação da reta e, portanto, maior será o efeito de `\(X\)` em relação a `\(Y\)`.
+
+--
+
+A cada unidade de variação em `\(X\)`, observa-se um aumento ou uma diminuição no valor de `\(Y\)` na ordem de `\(\beta_1x\)`. 
+
+
+---
+
+# Parte Sistemática do modelo
+
+
+**Comportamento da reta do MRLS de acordo com o valor de `\(\beta_1\)`**
+
+&lt;img src="figuras/figRegBeta2.png" width="70%" style="display: block; margin: auto;" /&gt;
+O sinal do coeficiente `\(\beta_{1}\)` define o sentido da reta do MRLS. Um sinal positivo representa uma reta crescente, enquanto que o sinal negativo denota uma reta decrescente. 
+
+
+
+---
+
+# Interpretação dos Parâmetros 
+
+**Interpretação de `\(\beta_0\)`**
+
+O valor de `\(\beta_0\)` representa o valor no qual a reta de regressão intercepta o eixo `\(y\)`, ou seja, é o valor de `\(Y\)` quando `\(X\)` é igual a zero.
+
+
+--
+
+**Interpretação de `\(\beta_1\)`**
+
+- Se `\(\beta_1 &gt; 0\)`, quando `\(X\)` aumenta, o valor esperado de `\(Y\)` aumenta;
+- Se `\(\beta_1 &lt; 0\)`,  quando `\(X\)` aumenta, o valor esperado de `\(Y\)` diminui;
+- Se `\(\beta_1 = 0\)`, não existe relação linear entre `\(x\)` e `\(Y\)`.
+
+
+
+---
+
+# Parte Aleatória do modelo
+
+A parte aleatória do MRLS é denotada por `\(\varepsilon\)` (erro aleatório) e representa a variação relacionada ao modelo.
+
+
+A partir desse componente é possível obter informações sobre a qualidade do ajuste do modelo.
+
+
+
+---
+
+
+# Propriedades do termo de erro do MRLS
+
+- A média dos erros é nula, isto é, `\(E(\varepsilon_i) = 0\)`;
+- `\(\varepsilon_i \sim N(0,\sigma^2)\)`, portanto a `\(Var(\varepsilon_i)\)` não se altera de acordo com valores específicos de `\(X\)`. Diz-se, então, que o erro é homocedástico;
+- Assume-se que os erros aleatórios correspondentes às observações são variáveis aleatórias não correlacionadas, ou seja: `\(Cov(\varepsilon_i,\varepsilon_j) = 0\)` para `\(i \neq j\)`.
+
+
+
+---
+
+# Suposições do MRLS
+
+
+O ajuste do modelo de regressão linear é realizado sob algumas suposições:
+
+
+- A relação entre `\(X\)` e `\(Y\)` é linear;
+
+- A média dos resíduos é igual a zero, ou seja, `\(E(\varepsilon_i) = 0\)`;
+
+- Os valores de `\(X\)` são fixos pois são controlados pelo pesquisador e não sofre variações aleatórias;
+	
+- `\(Y_i\)` e `\(Y_j\)` não são correlacionados.
+
+- Para cada valor de `\(X\)` tem-se que a `\(Var(\varepsilon_i) = \sigma^2\)`, ou seja, os erros possuem  mesma variabilidade para cada valor de `\(X\)` e, consequentemente, a `\(Var(Y_i) = E[Y_i - E(Y_i)]^2 = E(\varepsilon_i^2) = \sigma^2\)`. 
+
+- `\(Y|x_i \sim N(\beta_0+\beta_1 x_i; \sigma^2)\)`
+
+
+
+---
+
+
+# Suposições do MRLS
+
+**Distribuição de Y|x_i**
+
+
+&lt;img src="figuras/figDistYx.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Tipo de Ajuste
+
+### Modelo de Regressão ajustado sobre dados determinísticos
+
+Se estivéssemos trabalhando com dados determinísticos teríamos as observações localizadas exatamente sobre a reta. Poderíamos obter facilmente `\(\beta_0\)` e `\(\beta_1\)`.
+
+&lt;img src="figuras/figRegBeta3.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Tipo de Ajuste
+
+### Modelo de Regressão ajustado sobre dados determinísticos
+
+Entretanto, ocorre que é comum o uso de dados provenientes de amostras aleatórias, de modo que haverá uma aleatoriedade nas informações coletadas que irá repercutir no ajuste do modelo de regressão. 
+
+
+Teremos que admitir que ocorrerão afastamentos entre os valores observados e a reta predita pelo modelo.
+
+
+
+---
+# Tipo de Ajuste
+
+### Modelo de Regressão ajustado sobre dados determinísticos
+
+&lt;img src="figuras/figRegBeta4.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Tipo de Ajuste
+
+### Modelo de Regressão ajustado sobre dados aleatórios 
+
+A dispersão dos dados em torno da reta de regressão está associada ao componente do erro aleatório `\((\varepsilon_i)\)` e, consequentemente, à variância `\(\sigma^2\)`.
+
+
+Na figura a seguir pode-se observar o efeito de `\(\sigma^2\)` sobre a forma como os dados estão distribuídos e, consequentemente, como `\(\sigma^2\)` influencia no ajuste do modelo.
+
+**Efeito de `\(\sigma^2\)` no ajuste do MRLS**
+
+&lt;img src="figuras/figRegSima1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

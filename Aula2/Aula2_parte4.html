@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Regressão Linear Simples</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Prof. Adriana Andrade - Prof. Wagner Tassinari" />
+    <script src="Aula2_parte4_files/header-attrs-2.11/header-attrs.js"></script>
+    <link href="Aula2_parte4_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Aula2_parte4_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="Aula2_parte4_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="Aula2_parte4_files/fabric-4.3.1/fabric.min.js"></script>
+    <link href="Aula2_parte4_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="Aula2_parte4_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="Aula2_parte4_files/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="Aula2_parte4_files/tile-view-0.2.6/tile-view.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Regressão Linear Simples
+## Aula 2 - Parte 4
+### Prof. Adriana Andrade - Prof. Wagner Tassinari
+### Programa de Pós-Graduação em Medicina Veterinária - UFRRJ
+### 2021/11
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Inferência para os parâmetros do MRLS
+
+Seja `\((x_1,y_{1}\)`, ..., `\((x_n,y_n)\)` dados provenientes de uma amostra aleatória. Vamos supor que os valores `\(x_1, ...,x_n\)` são pré-fixados para os valores de `\(y_1, ..., y_n\)`, de tal forma que os valores de `\(y_i\)` são variáveis aleatórias.
+
+--
+
+Sob a ótica do MRLS, `\(Y|x \sim N(\beta_0;+ \beta_1x_i ; \sigma^2)\)`. Então, cada `\(y_i\)` tem a seguinte distribuição:  `\(y_i\sim N(\beta_0;+ \beta_1x_i ; \sigma^2)\)`.
+
+--
+
+Assim, os estimadores de mínimos quadrados dos coeficientes de regressão são variáveis aleatórias e se `\(Y\)` tem distribuição Normal, os estimadores `\(\hat{\beta_0}\)` e `\(\hat{\beta_1}\)` também terão distribuição Normal.
+
+---
+
+
+# Distribuição  dos estimadores do MRLS
+
+Temos que as distribuições de `\(\hat{\beta_0}\)` e `\(\hat{\beta_1}\)`, são, respectivamente:
+
+
+`\(\hat{\beta_0} \sim N\left(\beta_0;\sigma^2\left[\frac{1}{n} +\frac{\bar{x}^2}{\sum_{i=1}^{n}(x_i-\bar{x})^2}\right]	\right)\)`
+
+
+
+`\(\hat{\beta_0} \sim N\left(\beta_1; \frac{\sigma^2}{\sum_{i=1}^{n}(x_i-\bar{x})^2}\right)\)`
+
+
+Repare que `\(\hat{\beta_0}\)` e `\(\hat{\beta_1}\)` são estimadores não-viciados para `\(\beta_0\)` e `\(\beta_1\)`, respectivamente.
+
+
+---
+
+# Variância do Erro Aleatório `\(\sigma^2\)`
+
+
+Conforme assinalado anteriormente, a `\(E(\sigma^2)=0\)`. A variância de `\(\sigma^2\)` no modelo de regressão, reflete a variância aleatória ao redor da verdadeira reta de regressão.
+
+
+--
+
+Nas expressões da `\(Var(\hat{\beta_0})\)` e de `\(Var(\hat{\beta_0})\)` encontra-se o termo relativo à variância do resíduo `\(\sigma^2\)`, portanto, para realizar a inferência sobre os parâmetros da regressão `\(\beta_0\)` e `\(\beta_1\)`, é necessário obter uma estimativa para `\(\sigma^2\)`.
+
+--
+
+O papel de `\(\sigma^2\)` na estimação do modelo de regressão é de extrema importância, pois é um indicador da qualidade do ajuste realizado. Quanto maior for o valor de  `\(\sigma^2\)`, maior serão os valores das variâncias de `\(\hat{\beta_0}\)` e de `\(\hat{\beta_1}\)` e, consequentemente, menor será a precisão desses estimadores.
+
+---
+
+# Variância do Erro Aleatório `\(\sigma^2\)`
+
+Note que: 
+
+
+- `\(\hat{y_i}\)` é o estimador para `\(E(Y|x_i)\)`.
+
+- `\(\hat{y_i} = \hat{\beta_0}+\hat{\beta_1}x_i; i=1,2,...n\)`.
+
+- `\(e_i=y_i-\hat{y_i}\)` (resíduos); `\(i=1,2,...n\)`.
+
+- Os resíduos `\(e_i=y_i-\hat{y_i}\)` são utilizados para estimar `\(\sigma^2\)`.
+
+
+---
+
+# Variância do Erro Aleatório `\(\sigma^2\)`
+
+
+Um estimador não viciado para `\(\sigma^2\)` é dado por:
+
+
+`$$\hat{\sigma_2} = \frac{\sum_{i=1}^{n}(y_i-\hat{y_i})^2}{n-2}=\frac{SQE}{n-2}$$`
+
+
+---
+
+# Variância do Erro Aleatório `\(\sigma^2\)`
+
+A soma dos quadrados dos resíduos (ou soma dos quadrados dos erros) é dada por:
+
+`$$SQE = \sum_{i=1}^{n}(y_i-\hat{y_i})^2=\sum_{i=1}^{n}e_i^2$$`
+
+
+---
+
+# Distribuição dos Estimadores do MRLS
+
+
+`\(\frac{\hat{\beta_0} - \beta_0}{\sqrt{\hat{\sigma^2} \left[\frac{1}{n} + \frac{\bar{x}^2}{S_{XX}} \right] }} \sim t_{(n-2)}\)`
+
+--
+
+`\(\frac{\hat{\beta_1}-\beta_1}{\sqrt{\frac{\hat{\sigma^2}}{S_{XX}}}}\sim t_{(n-2)}\)`
+
+onde `\(S_{XX} = \sum_{i=1}^{n}(x_i-\bar{x})^2\)`.
+
+---
+
+
+# Teste de Hipóteses na Regressão Linear Simples
+	
+
+No contexto do MRLS o teste de hipótese está relacionado com a significância da regressão, ou seja, implica testar a existência de relação linear entre `\(X\)` e `\(Y\)`. Esse teste é realizado a partir da significância da estimativa do parâmetro de inclinação `\(\beta_1\)`.
+
+---
+
+# Teste de Hipóteses na Regressão Linear Simples
+
+Hipóteses:
+
+`\(H_0:\beta_1 = 0\)`
+
+
+`\(H_1:\beta_1 \neq 0\)`
+
+# Teste de Hipóteses na Regressão Linear Simples
+
+O teste de hipótese para o parâmetro de inclinação `\(\beta_1\)` verifica a importância da contribuição da variável regressora `\(X\)` na explicação da variação da variável resposta `\(Y\)`. Se `\(H_0\)` for verdadeira, isto é, `\(\beta_1\)` = 0, essa contribuição não é significativa ou a verdadeira relação entre `\(x\)` e `\(Y\)` não é linear. 
+
+--
+
+No caso em que estimativa do parâmetro de inclinação `\(\beta_1\)` não é significativa, o melhor estimador de `\(Y\)` para qualquer `\(X\)` é `\(\bar{Y}\)`.
+
+---
+
+# Estatística de Teste
+
+A estatística de teste parâmetro `\(\beta_1\)` é dada por:
+
+`\(T=\frac{\hat{\beta_1}}{\sqrt{\frac{\hat{\sigma^2}}{S_{XX}}}}\)`, sob  `\(H_0\)`
+
+---
+
+# Região de Rejeição
+
+`\(RC = (-\infty, -t_{\alpha/2,n-2}) \bigcup (t_{\alpha/2,n-2},+\infty)\)`
+
+
+Se `\(T\in RC\)`, então, rejeita-se `\(H_0\)` ao nível de significância `\(\alpha\)`. Caso contrário, não se rejeita `\(H_0\)`.
+
+
+---
+
+# Estatística de Teste
+
+Em estatística, e especificamente no campo dos testes de hipóteses, o *valor de p*, ou *p-valor*, representa a probabilidade da nossa amostra ter sido tirada de uma população sob a suposição de que a hipótese nula é verdadeira.
+
+Se `\(p-valor&lt; \alpha\)` rejeita-se `\(H_0\)`
+
+
+
+---
+
+# Intervalo de Confiança para `\(\beta_0\)` e `\(\beta_1\)`
+
+Além das estimativas pontuais de `\(\beta_0\)` e de `\(\beta_1\)`, é possível obter estimativas intervalares para esses parâmetros com base em suas distribuições de probabilidade. 
+
+
+
+A amplitude desses intervalos revela informações sobre a qualidade geral da reta de regressão.
+
+---
+
+# Intervalo de Confiança para `\(\beta_0\)` e `\(\beta_1\)`
+
+
+Os intervalos de confiança de `\((1-\alpha)100\%\)` para os parâmetros `\(\beta_0\)` e `\(\beta_1\)`, são dados por:
+
+
+`\(\hat{\beta_0} \pm t_{\alpha/2,n-2}{\sqrt{\hat{\sigma^2} \left[\frac{1}{n} + \frac{\bar{x}^2}{S_{XX}} \right] }}\)`
+
+
+`\(\hat{\beta_1} \pm t_{\alpha/2,n-2}{\sqrt{\frac{\hat{\sigma^2}}{S_{XX}}}}\)`
+
+
+
+Rejeita-se `\(H_0\)` quando o intervalo de confiança estimado não contiver o zero.
+
+---
+
+# Exemplo 1
+
+
+Um veterinário acredita que uma substância adicionada ao pasto pode melhorar o ganho de peso dos animais Foram escolhidos 10 animais de mesma raça e idade para serem submetidos a esse esquema de alimentação com concentrações distintas da substância (mg/l). O ganho de peso (em kg) após 30 dias é apresentado na Tabela 1.
+
+---
+# Exemplo 1
+
+
+Table: Peso de bovinos segundo quantidade de substância no pasto
+
+| Substância | Peso |
+|:----------:|:----:|
+|    0.2     | 9.4  |
+|    0.5     | 11.4 |
+|    0.6     | 12.3 |
+|    0.7     | 10.2 |
+|    1.0     | 11.9 |
+|    1.5     | 13.6 |
+|    2.0     | 14.2 |
+|    2.5     | 16.2 |
+|    3.0     | 16.2 |
+|    3.5     | 17.7 |
+
+---
+# Exemplo 1
+
+A relação entre as variáveis ganho de peso e quantidade de substância adicionada no pasto foi avaliada pelo ajuste de um MRLS.
+
+A tabela a seguir apresenta as estimativas obtidas do modelo ajustado.
+
+
+
+Tabela dos Coeficientes do modelo estimado
+
+| Coeficiente| Estimativa    | Erro Padrão   | t   | p_valor    |
+|------------|---------|------|-----|------|
+| `\(\beta_0\)`  | 9.712  | 0.4135| 23.49  |1.149e-08 |
+| `\(\beta_1\)`  | 2.322  |  0.2183     |  10.64    |  5.347e-06     |
+
+
+---
+# Exemplo 1
+
+Equação do modelo: `\(\hat{y}_i = 9.712 + 2.322x_i\)`
+
+Com base nesse modelo, a cada um mg/l acrescido da substância no pasto, nota-se um aumento na ordem de `\(2,32 kg\)`  no ganho de peso no gado.
+
+---
+
+# Exemplo 1
+
+Pode-se ainda, a partir da distribuição amostral dos estimadores `\(\hat{\beta_{0}}\)` e `\(\hat{\beta_{1}}\)` construir intervalos de confiança para as estimativas pontuais dos parâmetros:
+
+
+
+`\(IC(\beta_0;0,95) = [8.758;10.665]\)`
+
+
+
+`\(IC(\beta_1;0,95) = [1.818;2.825]\)`
+
+
+Nota-se que ambos intervalos estimados não contém o valor zero, o que é mais uma evidência de que os parâmetros são diferentes de zero. 
+
+---
+# Valores preditos pelo modelo
+
+Um dos principais objetivos da estimação de um modelo de regressão linear é obter estimativas para a variável resposta `\(Y\)` considerando os valores da variável regressora `\(X\)`.
+
+--
+
+Uma vez que os coeficientes `\(\beta_0\)` e `\(\beta_1\)` foram estimados, basta colocar um valor específico de `\(x\)` na equação do modelo obtida para calcular o valor de `\(\hat{y}_i\)` predito pelo modelo.
+
+---
+# Exemplo 1
+	
+O modelo obtido para o exemplo que relaciona o ganho de peso com as quantidade de substância adicionada ao pasto possui a seguinte equação:
+	
+`\(\hat{y}_i = 9.712 + 2.322x_i\)`
+		
+Com base nesse modelo, podemos obter o ganho médio de peso para os animais que tiveram a adição de 2,0 mg/l da substância no pasto, denotado por `\(\hat{y}(2,0)\)`:
+	
+
+
+`\(\hat{y}(2,0) = 9.712 + 2.322(2,0) = 14.356\)`
+
+---
+# IC para Resposta Média
+	
+Após o ajuste de um MRLS, é possível obter Intervalos de Confiança para a resposta média `\(E(Y|x=x_j) = \mu_j\)`. 
+
+Esse intervalo de confiança fornece informação sobre a precisão das estimativas, no sentido de que quanto menor for a amplitude do intervalo, maior será a precisão da estimativa.
+	
+O intervalo de confiança para a resposta média de `\(Y\)` será calculado tendo por referência um valor fixo de `\(x\)`. Tal que:
+	
+`\(E(Y|x) = \mu_{Y|x} = \beta_0 + \beta_1x\)`
+
+---
+# IC para Resposta Média
+
+Um intervalo de confiança de `\(100(1-\alpha)\%\)` para o valor esperado de `\(Y|X=x\)` é dado por:
+
+
+`\(\hat{\mu}_{Y|x} - t_{\alpha/2,n-2} \sqrt{\sigma^2\left[\frac{1}{n} + \frac{(x_j - \bar{x})^2}{S_{XX}} \right] }\leq  \mu_{Y|x_y} \leq + t_{\alpha/2,n-2}\sqrt{\sigma^2\left[\frac{1}{n} + \frac{(x_j - \bar{x})^2}{S_{XX}} \right] }\)`
+
+---
+
+
+# Exemplo
+
+Podemos obter um intervalo de confiança para o ganho médio de peso para os animais que tiveram a adição de 2,0 mg/l da substância no pasto, denotado por:
+
+
+`\(IC(\hat{\mu}_{Y|x}=2;0,95)= (13.76; 14.95)\)`
+
+
+---
+
+
+
+# IC para Resposta Média
+
+Com base no cálculo de intervalos de confiança para diferentes valores de `\(x\)`, é possível a obtenção de limites de confiança para cada valor de `\(\mu_{Y|x}\)` e, desse modo, a construção de uma região em torno da reta estimada com a indicação dos limites superiores e inferiores desses intervalos. 
+
+Essa região é chamada de banda de confiança.	
+
+---
+# Exemplo
+
+O cálculo dos intervalos de confiança para cada valor previsto pelo modelo possibilita a elaboração do gráfico com as bandas de confiança conforme a Figura: 
+
+
+&lt;img src="Aula2_parte4_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
