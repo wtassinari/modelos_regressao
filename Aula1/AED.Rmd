@@ -112,7 +112,7 @@ colFmt <- function(x,color) {
 ### 2. Utilização de medidas de estatística descritiva
     
 * Contagens ou Distribuição de Frequências (Variáveis Qualitativas ou Categóricas)
-* Medidas de têndencia central e dispersão (Variáveis Quantitativas)
+* Medidas de tendência central e dispersão (Variáveis Quantitativas)
 * Medidas de associação (Análises Bivariadas)
 * Utilização de métodos visuais (gráficos)
     
@@ -123,7 +123,7 @@ colFmt <- function(x,color) {
 
 - Base de dados: daisy2.xlsx
 
-- Esta base trata-se de conjunto de dados proveniente de um estudo tipo coorte a respeito das condições do manejo reprodutivo em rebanhos de bovinos leiteiros. O objetivo é avaliar o desempenho reprodutivo e a produção de leite desses animais.
+- Conjunto de dados proveniente de um estudo tipo coorte a respeito das condições do manejo reprodutivo em rebanhos de bovinos leiteiros. O objetivo é avaliar o desempenho reprodutivo e a produção de leite desses animais.
 
 - Dicionário de variáveis:
 
@@ -172,6 +172,8 @@ library(readxl)
 daisy2 <- read_excel("~/Google Drive/UFRRJ/Modelos Regressão 2021/Bancos/daisy2.xlsx")
 
 daisy2 <- daisy2[daisy2$h7 == 1, ] # vamos apenas usar um subconjunto dos dados
+
+head(daisy2)
 ```
 
 
@@ -194,6 +196,8 @@ Ou siga as seguintes etapas no RStudio: `r colFmt(" *Environment --> Import Data
 ```{r, echo=T}
 myvars <- c("cow", "dyst", "milk120", "mwp", "parity", "twin", "rp", "vag_disch")
 banco <- daisy2[myvars]
+
+View(banco)
 
 ```
 
@@ -263,7 +267,7 @@ prop.table(table(banco$vag_disch)) # Freq relativa
 
 ---
 
-# Verificanco a distribuição das variáveis categóricas graficamente
+# Verificando a distribuição das variáveis categóricas graficamente
 
 
 ```{r, echo = T, out.width='90%'}
@@ -277,7 +281,7 @@ barplot(prop.table(table(banco$vag_disch)), ylab = "Freq. Relativa", xlab = "Cor
 
 ---
 
-# Verificanco a distribuição das variáveis quantitativas
+# Verificando a distribuição das variáveis quantitativas
 
 
 ```{r, echo = T, results='markdown'}
@@ -294,7 +298,7 @@ summary(banco$parity)
 
 ---
 
-# Verificanco a distribuição das variáveis quantitativas graficamente
+# Verificando a distribuição das variáveis quantitativas graficamente
 
 
 ```{r, echo = T, eval =T, out.width='90%'}
@@ -312,8 +316,8 @@ boxplot(banco$milk120, xlab = "Produção de leite",
 par(mfrow=c(2,1))
 hist(banco$mwp, xlab = "mwp", 
                   main="Período de espera até a concepção")
-boxplot(banco$mwp, xlab = "calvcon", 
-                main="Boxplot da mwp", horizontal=TRUE)
+boxplot(banco$mwp, xlab = "Dias", 
+                main="Boxplot - Período de espera até a concepção", horizontal=TRUE)
 
 ```
 
@@ -321,8 +325,8 @@ boxplot(banco$mwp, xlab = "calvcon",
 par(mfrow=c(2,1))
 hist(banco$parity, xlab = "parity", 
                   main="Números de lactações")
-boxplot(banco$parity, xlab = "parity", 
-                main="Boxplot da parity", horizontal=TRUE)
+boxplot(banco$parity, xlab = "Lactações", 
+                main="Boxplot - Números de lactações", horizontal=TRUE)
 
 ```
 
@@ -334,13 +338,13 @@ boxplot(banco$parity, xlab = "parity",
 banco$parity_cat <- cut((banco$parity), breaks = c(0, 1, 2, 4, Inf), labels = c("Até 1", 
     "1 a 2", "2 a 4", "Mais de 4"))
 table(banco$parity_cat)
-barplot(prop.table(table(banco$parity_cat)), ylab = "Freq. Relativa", xlab = "Números de lactações", horiz=TRUE)
+barplot(prop.table(table(banco$parity_cat)), ylab = "Freq. Relativa", xlab = "Número de lactações", horiz=TRUE)
 
 ```
 
 ---
 
-# Distribuião das complicações no parto segundo o número de lactações
+# Distribuição das complicações no parto segundo o número de lactações
 
 
 * Utilizando o pacote *gmodels* [link](https://www.rdocumentation.org/packages/gmodels)
@@ -354,7 +358,7 @@ CrossTable(banco$parity_cat, banco$dyst, digits=2, prop.r=FALSE,
 
 ```
 
-````{r, echo = T, eval =F, out.width='70%', results='markdown'}
+````{r, echo = T, eval =T, out.width='70%', results='markdown'}
 # Stacked Bar Plot 
 
 tabela <- table(banco$parity_cat, banco$dyst)
@@ -365,7 +369,7 @@ barplot(prop.table(tabela), main="Complicações no parto segundo o número de l
 
 ```
 
-# Distribuião das complicações no parto segundo o nascimento duplo
+# Distribuição das complicações no parto segundo o nascimento duplo
 
 
 ```{r, echo = F, out.width='70%', results='markdown'}
@@ -377,7 +381,7 @@ CrossTable(banco$twin, banco$dyst, digits=2, prop.r=FALSE,
 
 ```
 
-````{r, echo = T, eval =F, out.width='70%', results='markdown'}
+````{r, echo = T, eval =T, out.width='70%', results='markdown'}
 # Stacked Bar Plot 
 
 tabela <- table(banco$twin, banco$dyst)
@@ -389,7 +393,7 @@ barplot(prop.table(tabela), main="Complicações no parto segundo o nascimento d
 ```
 
 
-# Complicações no parto segundo a retenção da placenta no parto 
+# Distribuição das complicações no parto segundo a retenção da placenta no parto 
 
 
 ```{r, echo = F, out.width='70%', results='markdown'}
@@ -400,7 +404,7 @@ CrossTable(banco$rp, banco$dyst, digits=2, prop.r=FALSE,
 
 ```
 
-````{r, echo = T, eval =F, out.width='70%', results='markdown'}
+````{r, echo = T, eval =T, out.width='70%', results='markdown'}
 # Stacked Bar Plot 
 
 tabela <- table(banco$rp, banco$dyst)
@@ -455,7 +459,7 @@ library(tableone)
 
 myVars <- c("dyst", "milk120", "mwp", "parity", "parity_cat", "twin", "rp", "vag_disch")
 
-## criando o obejeto da TableOne 
+## criando o objeto da TableOne 
 
 tabela1 <- CreateTableOne(vars = myVars, data = banco)
 
