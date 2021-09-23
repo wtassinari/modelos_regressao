@@ -209,8 +209,8 @@ Fourth Edition. Springer.
 
 | Atividades |             Tipo de atividades            |                                            Links                                           |
 |:----------:|:-----------------------------------------:|:------------------------------------------------------------------------------------------:|
-|  Síncrona  | Atividades síncronas a respeito da Aula 1 | [link](Aula1/AED.html) |
-
+|  Síncrona  | Atividades síncronas a respeito da Aula 1 - Parte 1 | [link](Aula1/AED.html) |
+|  Síncrona  | Atividades síncronas a respeito da Aula 1 - Parte 2 |  [link](Aula1/AED2.html)  |
 
 
 ## **Aula 2:** Modelo de regressão simples.
