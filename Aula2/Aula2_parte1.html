@@ -5,16 +5,36 @@
     <meta charset="utf-8" />
     <meta name="author" content="Prof. Adriana Andrade" />
     <meta name="author" content="Prof. Wagner Tassinari" />
-    <script src="Aula2_parte1_files/header-attrs-2.10/header-attrs.js"></script>
-    <link href="Aula2_parte1_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="Aula2_parte1_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
-    <link href="Aula2_parte1_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
-    <script src="Aula2_parte1_files/fabric-4.3.1/fabric.min.js"></script>
-    <link href="Aula2_parte1_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
-    <script src="Aula2_parte1_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script src="Aula2_parte1_teste_files/header-attrs/header-attrs.js"></script>
+    <link href="Aula2_parte1_teste_files/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="Aula2_parte1_teste_files/tile-view/tile-view.js"></script>
+    <script src="Aula2_parte1_teste_files/fabric/fabric.min.js"></script>
+    <link href="Aula2_parte1_teste_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="Aula2_parte1_teste_files/xaringanExtra-scribble/scribble.js"></script>
     <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
-    <link href="Aula2_parte1_files/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
-    <script src="Aula2_parte1_files/tile-view-0.2.6/tile-view.js"></script>
+    <script src="Aula2_parte1_teste_files/clipboard/clipboard.min.js"></script>
+    <link href="Aula2_parte1_teste_files/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="Aula2_parte1_teste_files/shareon/shareon.min.js"></script>
+    <link href="Aula2_parte1_teste_files/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="Aula2_parte1_teste_files/xaringanExtra-shareagain/shareagain.js"></script>
+    <link href="Aula2_parte1_teste_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="Aula2_parte1_teste_files/panelset/panelset.js"></script>
+    <link href="Aula2_parte1_teste_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="Aula2_parte1_teste_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
+    <link href="Aula2_parte1_teste_files/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="Aula2_parte1_teste_files/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="Aula2_parte1_teste_files/animate.css/animate.xaringan.css" rel="stylesheet" />
+    <link href="Aula2_parte1_teste_files/tachyons/tachyons.min.css" rel="stylesheet" />
+    <script src="Aula2_parte1_teste_files/tone/Tone.js"></script>
+    <script src="Aula2_parte1_teste_files/slide-tone/slide-tone.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"fe4b68c7bca5470389bf3cb6c9dd32e0","expires":14}</script>
+    <script src="Aula2_parte1_teste_files/himalaya/himalaya.js"></script>
+    <script src="Aula2_parte1_teste_files/js-cookie/js.cookie.js"></script>
+    <link href="Aula2_parte1_teste_files/editable/editable.css" rel="stylesheet" />
+    <script src="Aula2_parte1_teste_files/editable/editable.js"></script>
+    <link href="Aula2_parte1_teste_files/animate.css-xaringan/animate.fade.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -34,6 +54,8 @@ class: center, middle, inverse, title-slide
 
 
 
+&lt;!-- layout: true --&gt;
+&lt;!-- &lt;div style="position: absolute;right:50px;top:11px;color:gray;"&gt;Prof. Adriana Andrade, Prof. Wagner Tassinari - Programa de Pós-Graduação em Medicina Veterinária - UFRRJ&lt;/div&gt; --&gt;
 
 
 
@@ -41,6 +63,72 @@ class: center, middle, inverse, title-slide
 
 
 
+
+
+
+
+
+<style>.shareagain-bar {
+--shareagain-foreground: rgb(255, 255, 255);
+--shareagain-background: rgba(0, 0, 0, 0.5);
+--shareagain-facebook: none;
+--shareagain-pinterest: none;
+--shareagain-reddit: none;
+}</style>
+
+
+
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 100px;
+height: 128px;
+z-index: 0;
+background-image: url(logorural.jpg);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+
+
+
+
+
+
+
+
+---
 
 # Introdução - Modelagem Estatística
 
@@ -150,7 +238,7 @@ Uma maneira de avaliar a associação entre essas duas variáveis pode ser reali
 
 # Exemplo
 
-&lt;img src="Aula2_parte1_files/figure-html/dispersão ex_1-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula2_parte1_teste_files/figure-html/dispersão ex_1-1.png" width="648" /&gt;
 
 
 ---

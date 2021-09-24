@@ -1,0 +1,312 @@
+---
+title: "Regressão Linear Simples"
+subtitle: "Aula2 - Parte 1"
+author: 
+  - "Prof. Adriana Andrade"
+  - "Prof. Wagner Tassinari"
+institute: "Programa de Pós-Graduação em Medicina Veterinária - UFRRJ"
+date: "2021/11"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+    slideNumberFormat:
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+# Utilizando o  css: xaringan-themer.css
+# Podemos personalizar
+# https://cran.r-project.org/web/packages/xaringanthemer/vignettes/xaringanthemer.html
+
+library(xaringanthemer)
+
+# style_duo_accent(
+#   primary_color = "#1381B0",
+#   secondary_color = "#FF961C",
+#   inverse_header_color = "#FFFFFF"
+# )
+
+style_mono_accent(
+  base_color = "#43418A",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+
+# style_mono_accent(base_color = "#1c5253")
+# style_mono_light(base_color = "#23395b")
+
+```
+
+```{r, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+#  out.width = "100%",
+  cache=TRUE,
+  prompt=FALSE,
+  tidy=TRUE,
+  comment=NA,
+  message=FALSE,
+  warning=FALSE,
+  cache.lazy=FALSE,
+  echo = TRUE,
+  hiline = TRUE
+)
+
+# https://www.kirenz.com/slides/xaringan-demo-slides.html#40
+# https://www.garrickadenbuie.com/talk/extra-special-xaringan/
+# https://pkg.garrickadenbuie.com/xaringanExtra/#/README?id=xaringanextra
+```
+
+<!-- layout: true -->
+<!-- <div style="position: absolute;right:50px;top:11px;color:gray;">`r rmarkdown::metadata$author` - `r rmarkdown::metadata$institute`</div> -->
+
+
+```{r xaringan-tile-view, echo=FALSE}
+# Para navegar entre slides - tecle o
+# install.packages("devtools")
+# devtools::install_github("gadenbuie/xaringanExtra")
+xaringanExtra::use_tile_view()
+```
+
+```{r xaringan-scribble, echo=FALSE}
+#Adiciona ferramenta para anotação
+xaringanExtra::use_scribble()
+```
+
+```{r  adds a share bar to your slides, echo=FALSE}
+xaringanExtra::use_share_again()
+```
+
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+
+```{r style-share-again, echo=FALSE}
+xaringanExtra::style_share_again(
+  share_buttons = c("twitter", "linkedin", "pocket")
+)
+```
+
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\"></i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\"></i>",
+    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "editable", 
+    "slide_tone", "animate", "tachyons"))
+```
+
+
+```{r xaringan-animate-all, echo=FALSE}
+xaringanExtra::use_animate_all("fade")
+```
+
+
+```{r xaringan-extra, echo=FALSE}
+xaringanExtra::use_logo("logorural.jpg", width="100px")
+```
+
+
+
+```{r - Packages, include=FALSE}
+library(readr)
+library(tidyverse)
+library(ggplot2)
+library(pander)
+library(xaringanExtra)
+library(xaringanthemer)
+library(mfx)
+library(kableExtra)
+library(knitr)
+library(pagedown)
+
+```
+
+
+```{r setup, include=FALSE}
+# https://ourcodingclub.github.io/2016/11/24/rmarkdown-1.html
+knitr::opts_chunk$set(fig.width = 7, fig.height = 5, fig.align = 'center', dpi = 96, cache=TRUE, comment = "", message = F, warning = F)
+
+```
+
+
+---
+
+# Introdução - Modelagem Estatística
+
+
+Na produção de evidências estatísticas que corroboram ou não nossas hipóteses de estudo, é comum a elaboração de modelos que possibilitam uma compreensão do fenômeno de interesse.
+
+
+
+--
+
+Nesse contexto, o modelo é uma representação matemática de um fenômeno: $Y= f(x)$, onde $Y$ representa o desfecho de interessse e $f(x)$ uma função que relaciona com valores de uma ou mais variáveis explicativas $X$ com valores de $Y$.
+
+--
+
+O objetivo é verificar como ocorrem variações em $Y$ de acordo com os valores de $X$.
+
+---
+
+# Introdução - Modelagem Estatística
+
+No âmbito da Estatística, iremos adotar o uso de modelos probabilistícos, os quais reconhecem que o desfecho de interesse pode ser afetado por fatores não controlados pelo pesquisador, de forma que:
+
+$$Y= f(x)+\varepsilon$$
+
+
+onde $\varepsilon$ representa as fontes de variação não controladas e, portanto, de natureza aleatória.
+
+
+---
+# Introdução - Modelagem Estatística
+
+**Epatas da Modelagem Estatística**
+
+1. Definição das hipóteses;
+2. Coleta e preparação dos dados;
+3. Seleção das variáveis regressoras ou preditores (Modelo Teórico);
+4. Ajuste do modelo;
+5. Diagnóstico para verificar se o modelo ajustado está adequado;
+6. Aplicar medidas remediadoras (corretivas) quando as condições do modelo não são satisfeitas;
+7. Verificar a qualidade do modelo ajustado;
+8. Validação dos modelos.
+
+---
+# Introdução - Modelagem Estatística
+
+
+
+```{r modelagem, out.width='70%', fig.align='center',echo=FALSE}
+knitr::include_graphics('figuras/modelagem.png')
+
+```
+
+---
+# Introdução - Modelo de Regressão Linear
+
+A análise de regressão é uma metodologia estatística que investiga a relação entre uma variável quantitativa e uma ou mais variáveis quantitativas ou qualitativas, de tal forma que uma variável pode ser predita a partir de outras variáveis;
+
+--
+
+O modelo de regressão linear nos permite avaliar variações na variável resposta a partir de mudanças na variável explicativa;
+
+--
+
+Essa técnica se apoia na correlação existente entre as variáveis e propõe uma representação matemática de uma realidade ou fenômeno de interesse.
+
+
+---
+# Introdução - Modelo de Regressão Linear
+
+Exemplos
+
+- População de bactérias pode ser predita a partir da relação entre a população e o tempo de armazenamento;
+- Período de espera até a lactação associado com problemas no parto;
+- Relação entre número de carrapatos e a temperatura;
+- Ganho de pesos em ratos relacionado com a quantidade de proteínas ingerida.
+
+---
+
+# Exemplo
+
+Um veterinário acredita que uma substância adicionada ao pasto pode melhorar o ganho de peso dos bovinos. Foram escolhidos 10 animais de mesma raça e idade para serem submetidos a esse esquema de alimentação com concentrações distintas da substância (mg/l). O ganho de peso (em kg) após 30 dias é apresentado na Tabela 1.
+
+---
+
+# Exemplo
+
+```{r dados ex_1,echo=FALSE}
+substancia<-c(0.2, 0.5, 0.6, 0.7, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5)
+peso<-c(9.4, 11.4, 12.3, 10.2, 11.9, 13.6, 14.2, 16.2, 16.2, 17.7)
+
+tab_ex1<-as_tibble(cbind(substancia,peso))
+kable(tab_ex1,format = "markdown",  col.names = c('Substância', 'Peso'), digits = 1, align ="cc")
+
+
+``` 
+
+---
+
+# Exemplo
+
+Uma maneira de avaliar a associação entre essas duas variáveis pode ser realizada a partir da análise do diagrama de dispersão  e da correlação linear de Pearson entre as duas variáveis.
+
+
+---
+
+
+# Exemplo
+
+```{r dispersão ex_1,echo=FALSE}
+substancia<-c(0.2, 0.5, 0.6, 0.7, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5)
+peso<-c(9.4, 11.4, 12.3, 10.2, 11.9, 13.6, 14.2, 16.2, 16.2, 17.7)
+
+library(ggplot2)
+ggplot()+
+  geom_point(aes(x=substancia,y=peso))+
+  xlab("Substância (mg/l)")+
+  ylab("Peso (kg)")+
+  ggtitle("Diagrama de dispersão: Peso x Substância")+
+  geom_text(aes(x=3, y=14, label="COR(X,Y) = 0.97"), hjust=0, vjust=1)
+
+
+```
+
+
+---
+
+# Exemplo
+
+
+Uma outra forma de avaliar a associação entre as variáveis poderia ser pela estimação de um modelo de regressão linear simples para esse conjunto de dados.
+
+
+---
+# Objetivos da Regressão
+
+
+- Predição  
+- Seleção de variáveis
+- Estimação de parâmetros
+- Inferência
+    
+
+---
+
+# Forma Geral do Modelo de Regressão
+
+O modelo de regressão relaciona as variáveis de interesse a partir de uma forma funcional:
+
+$$Y = f(x) + \varepsilon$$
+
+Onde:
+
+
+$Y$: variável dependente (resposta ou desfecho);
+
+$X$: variável independente (explicativa, covariável ou preditora);
+
+$f$: descreve a relação entre x e y (componente sistemático);
+
+$\varepsilon$: erro aleatório (componente aleatório).
+
+
