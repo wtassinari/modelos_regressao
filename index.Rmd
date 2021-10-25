@@ -9,7 +9,11 @@ author: |
 date: "2021"
 output:
   rmdformats::readthedown:
-    highlight: kate
+   highlight: kate
+
+# css: custom.css
+# output: rmdformats::material
+  
 ---
 
 
@@ -81,7 +85,15 @@ colFmt <- function(x,color) {
 
 ```{r echo=F, fig.align="center", message=FALSE, warning=FALSE, comments=NA, out.width="90%", comment=NA}
 knitr::include_graphics('rural.jpg')
+knitr::include_graphics('Capivaras.png')
 ```
+
+## Professores:
+
+- Adriana Andrade (DEMAT/ICE/UFRRJ) (*andrade.ufrrj@gmail.com*)
+
+- Wagner Tassinari (DEMAT/ICE/UFRRJ) (*tassinari@ufrrj.br*)
+
 
 # Informações Gerais
 
@@ -97,7 +109,7 @@ disciplina inclui uma introdução aos Modelos de Regressão Generalizados,
 com a apresentação dos Modelos de Regressão Logística e o Modelo
 Poisson.
 
-## Formato das Disciplinas 
+## Formato da Disciplina
 
 - O curso será composto de atividades **síncronas** (são atividades baseadas em encontros remotos professor-alunos de forma on line) e de atividades **assíncronas** (são atividades que poderam ser feitas pelos alunos sem a presença do professor, por exemplo: Leitura do material bibliográfico, videoaulas, listas de exercícios e etc). As aulas síncronas serão feitas via plataforma *Google Meet* durante o horário original da disciplina. Os dias das aulas síncronas estão indicadas na tabela abaixo contendo o cronograma do curso. O link para o acesso as aulas síncronas, estará disponível no sistema SIGAA/UFRRJ no tópico do primeiro dia de aula.
 
@@ -109,44 +121,57 @@ Poisson.
 
 - Uma das formas de utilizar a linguagem R é através da interface gráfica **RStudio** ([link](https://rstudio.com/products/rstudio/)), que é uma IDE ou ambiente de desenvolvimento integrado, para o pacote R. Com sua utilização gratuita, o RStudio é uma excelente ferramenta para trabalhar com o R. Essa plataforma é extremamente visual quando comparado com ambientes de outras linguagens e também com o console do R, e muito simples de se utilizar.
 
+# Curso Extensão - Introdução à Análise de Dados no R
 
-# Programa das Disciplinas
+```{r echo=F, fig.align="center", message=FALSE, warning=FALSE, comments=NA, out.width="40%", comment=NA}
+knitr::include_graphics('cursoR.png')
+```
 
-- Introdução à Estatística
+Este é um curso de extenção ministrado pelos professores Diógenes Ferreira Filho e Manuel Francisco de Souza Pereira do DCEEX/IRT/UFRRJ.
+Neste curso é abordado desde a instalação do pacote estatístico R e da interface RStudio, análises básicas utilizando o R até o ambiente do universo do tidyverse e RMarkdown.
 
-- Apresentação dos dados em Tabelas
+As videoaulas encontram-se disponíveis de forma aberta neste [canal do YouTube]( https://youtube.com/channel/UCRc5HRkgnq8swWSAUywDd5w).
 
-- Apresentação dos dados em Gráficos
 
-- Medidas de Tendência Central
 
-- Medidas de Dispersão
+# Programa da Disciplina
 
-- Associação entre duas Variáveis
-
-- Introdução à Probabilidade
-
-- Variáveis Aleatórias Discretas e Contínuas
-
-- Introduão à Inferência Estatística
-
+| Tópicos | Conteúdo                                         |
+| ------- | ------------------------------------------------ |
+| **1.**   | **Análise Exploratória de Dados com software R** |
+|         |                                                  |
+| **2.**   | **Modelo de Regressão Linear Simples**           |
+| **2.1.** | Estimação dos Parâmetros                         |
+| **2.2.** | ANOVA da Regressão                               |
+| **2.3.** | Intervalo de Confiança e de Predição             |
+| **2.4.** | Adequação do Ajuste                              |
+|         |                                                  |
+| **3.**   | **Regressão Linear Múltipla**                    |
+| **3.1.** | Estimação dos Parâmetros                         |
+| **3.2.** | Métodos de Seleção de Modelos                    |
+| **3.3.** | Adequação do Ajuste                              |
+| **3.4.** | Variáveis Dummy                                  |
+|         |                                                  |
+| **4.**   | **Modelo de Regressão Logística**                |
+| **4.1.** | Estimação dos Parâmetros do Modelo               |
+| **4.2.** | Interpretação do Modelo                          |
+| **4.3.** | Avaliação da Qualidade do Modelo                 |
+|         |                                                  |
+| **5.**   | **Modelo de Regressão de Poisson**               |
+| **5.1.** | Estimação dos Parâmetros do Modelo               |
+| **5.2.** | Interpretação do Modelo                          |
+| **5.3.** | Avaliação da Qualidade do Modelo                 |
 
 
 # Avaliação da Disciplina
 
 - Seminário – 10/12/2021 
 
+**Obs:** Os seminários deverão ser feitos segundo as seguintes orientações: [link]()
 
-
-
-# Bibliografias
-
-## Bibliografia Básica
+# Bibliografia
 
 -  Dohoo, I. R., Martin, W., & Stryhn, H. E. (2003). Veterinary epidemiologic research.
-
-
-## Bibliografia Complementar
 
 - Dobson , AJ (2001). An introduction to generalized linear models.
 Chapman & Hall/CRC.
@@ -167,25 +192,7 @@ applications in engineering and the sciences. John Wiley & Sons.
 Fourth Edition. Springer.
 
 
-# Instalando o pacote estatístico R + sua interface gráfica RStudio
-
-- [Video mostrando sites para download do R](https://www.youtube.com/watch?v=waiNuVtj9-U)
-
-\vspace{0.3mm}
-
-- [Vídeo mostrando como instalar Rstudio no Windows](https://www.youtube.com/watch?v=aeK6-kPhofk)
-
-\vspace{0.3mm}
-
-- [Vídeo mostrando como instalar o R + Rstudio no Windows](https://www.youtube.com/watch?v=PWMqxKWHlz4&t=207s)
-
-\vspace{0.3mm}
-
-- [Vídeo mostrando o tutorial sobre compilador do R para celular](https://www.youtube.com/watch?v=plF3TUEw0Lg)
-
-
-
-# Cronograma das aulas síncronos
+# Cronograma dos encontros síncronos
 
 - Todos os encontros síncronos serão às sextas-feiras a partir das 9hs.
 
@@ -199,7 +206,7 @@ Fourth Edition. Springer.
 | 10/12/2021 |   6  | Apresentação dos Seminários                                       |
 
 
-## **Aula 1: Introdução do curso + Revisão Análise Exploratória de Dados (AED)**
+# **Aula 1: Revisão Análise Exploratória de Dados (AED)**
 
 - Nessa aula síncrona será apresentado esse novo formato da disciplina (conteúdo e dinâmica das aulas). 
 
@@ -207,38 +214,40 @@ Fourth Edition. Springer.
 
 - Não está prevista atividade assíncrona para esta aula.
 
+- Link de acesso a sala de aula virtual para a atividade síncrona do **dia 05/11/2021 (sexta-feira) às 9hs** [link](https://meet.google.com/vby-kyko-duu)
+
 | Atividades |             Tipo de atividades            |                                            Links                                           |
 |:----------:|:-----------------------------------------:|:------------------------------------------------------------------------------------------:|
 |  Síncrona  | Atividades síncronas a respeito da Aula 1 - Parte 1 | [link](Aula1/AED.html) |
 |  Síncrona  | Atividades síncronas a respeito da Aula 1 - Parte 2 |  [link](Aula1/AED2.html)  |
 
 
-## **Aula 2:** Modelo de regressão simples.
+<!-- ## **Aula 2:** Modelo de regressão simples. -->
 
 
 
-| Atividades |                Tipo de Atividade                            | Links|
-| :---------: | ---------------------------------------------------------- | :---: |
-| Assíncrona | Videoaula sobre a Aula 2 - Parte 1  |  [link]()  |
-| Assíncrona | Slides sobre a Aula 2 - Parte 1 |  [link](Aula2/Aula2_parte1.html)  |
-| Assíncrona | Videoaula sobre a Aula 2 - Parte 2 | [link]()   |
-| Assíncrona | Slides sobre a Aula 2 - Parte 2 | [link](Aula2/Aula2_parte2.html)   |
-| Assíncrona | Videoaula sobre a Aula 2 - Parte 3 |  [link]()  |
-| Assíncrona | Slides sobre a Aula 2 - Parte 3 |  [link](Aula2/Aula2_parte3.html)  |
-| Assíncrona | Videoaula sobre a Aula 2 - Parte 4  |  [link]()  |
-| Assíncrona | Slides sobre a Aula 2 - Parte 4 |  [link](Aula2/Aula2_parte4.html)  |
-| Assíncrona | Videoaula sobre a Aula 2 - Parte 5 | [link]()   |
-| Assíncrona | Slides sobre a Aula 2 - Parte 5 | [link](Aula2/Aula2_parte5.html)   |
-| Assíncrona | Videoaula sobre a Aula 2 - Parte 6 |  [link]()  |
-| Assíncrona | Slides sobre a Aula 2 - Parte 6 |  [link](Aula2/Aula2_parte6.html)  |
+<!-- | Atividades |                Tipo de Atividade                            | Links| -->
+<!-- | :---------: | ---------------------------------------------------------- | :---: | -->
+<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 1  |  [link]()  | -->
+<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 1 |  [link](Aula2/Aula2_parte1.html)  | -->
+<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 2 | [link]()   | -->
+<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 2 | [link](Aula2/Aula2_parte2.html)   | -->
+<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 3 |  [link]()  | -->
+<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 3 |  [link](Aula2/Aula2_parte3.html)  | -->
+<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 4  |  [link]()  | -->
+<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 4 |  [link](Aula2/Aula2_parte4.html)  | -->
+<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 5 | [link]()   | -->
+<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 5 | [link](Aula2/Aula2_parte5.html)   | -->
+<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 6 |  [link]()  | -->
+<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 6 |  [link](Aula2/Aula2_parte6.html)  | -->
 
 
-## **Aula 3:** Apresentação dos dados em tabelas e gráficos
+<!-- ## **Aula 3:** Apresentação dos dados em tabelas e gráficos -->
 
 
 
-# Orientações para os Seminários
+<!-- # Orientações para os Seminários -->
 
-- Os seminários deverão ser feitos segundo as seguintes orientações: [link](https://www.dropbox.com/s/z0ep4bv501tiary/instru%C3%A7%C3%B5es_prova.pdf?dl=0)
+<!-- - Os seminários deverão ser feitos segundo as seguintes orientações: [link](https://www.dropbox.com/s/z0ep4bv501tiary/instru%C3%A7%C3%B5es_prova.pdf?dl=0) -->
 
 
