@@ -167,7 +167,7 @@ As videoaulas encontram-se disponíveis de forma aberta neste [canal do YouTube]
 
 - Seminário – 10/12/2021 
 
-**Obs:** Os seminários deverão ser feitos segundo as seguintes orientações: [link](Seminarios/Roteiro_trabalho.pdf)
+**Obs:** Os seminários deverão ser feitos segundo as seguintes orientações: [link](https://drive.google.com/file/d/16Zm_795nPZHt888ZlrNv1QMw4zlCk_cD/view?usp=sharing)
 
 # Bibliografia
 
@@ -214,12 +214,13 @@ Fourth Edition. Springer.
 
 - Não está prevista atividade assíncrona para esta aula.
 
-- Link de acesso a sala de aula virtual para a atividade síncrona do **dia 05/11/2021 (sexta-feira) às 9hs** [link](https://meet.google.com/vby-kyko-duu)
 
 | Atividades |             Tipo de atividades            |                                            Links                                           |
 |:----------:|:-----------------------------------------:|:------------------------------------------------------------------------------------------:|
 |  Síncrona  | Atividades síncronas a respeito da Aula 1 - Parte 1 | [link](Aula1/AED.html) |
 |  Síncrona  | Atividades síncronas a respeito da Aula 1 - Parte 2 |  [link](Aula1/AED2.html)  |
+|  Síncrona  | Banco de dados **daisy2.xlsx**                       | [link](https://drive.google.com/file/d/1nwylCqb4_gFkch4sPBYHIajlCoQ0VQAz/view?usp=sharing) |
+|  Síncrona  | Link para a sala de videoconferência **dia 05/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/vby-kyko-duu)  |
 
 
 <!-- ## **Aula 2:** Modelo de regressão simples. -->
