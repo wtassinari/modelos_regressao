@@ -2,9 +2,9 @@
 title: "Pós-graduação em Ciências Veterinárias (IV/UFRRJ)"
 subtitle: "Análise Exploratória de Dados (AED) - Parte 2"
 author: |
-  | Adriana Andrade
+  | Profa. Adriana Andrade (DEMAT/ICE/UFRRJ)
   |
-  | Wagner Tassinari 
+  | Prof. Wagner Tassinari (DEMAT/ICE/UFRRJ)
   |
 date: "2021"
 output:
@@ -135,7 +135,7 @@ colFmt <- function(x,color) {
 
 # Prática
 
-- Base de dados: daisy2.xlsx
+- Base de dados: daisy2.xlsx ([link](https://docs.google.com/spreadsheets/d/1wOVCA2Jk6bKMyvi84H602ftKRqdFq5Gw238_7dTMvJE/edit?usp=sharing))
 
 - Conjunto de dados proveniente de um estudo tipo coorte a respeito das condições do manejo reprodutivo em rebanhos de bovinos leiteiros. O objetivo é avaliar o desempenho reprodutivo e a produção de leite desses animais.
 
