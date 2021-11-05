@@ -177,7 +177,7 @@ As videoaulas encontram-se disponíveis de forma aberta neste [canal do YouTube]
 Chapman & Hall/CRC.
 
 - Faraway, J. Practical Regression and Anova using R (PDF, banco de
-dados e scripts disponível no site [link]([https://julianfaraway.github.io/faraway/PRA/pra.pdf))
+dados e scripts disponível no site [link](https://julianfaraway.github.io/faraway/PRA/pra.pdf))
 
 - Fox, J (2002). An R and S-Plus Companion to Applied Regression. Sage
 Publications.
