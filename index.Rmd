@@ -35,19 +35,19 @@ knitr::opts_knit$set(width=75)
 ```
 
 
-```{r klippy}
-# Insert copy to clipboard buttons in HTML documents
-# remotes::install_github("rlesur/klippy")
-klippy::klippy(
-  lang = c("r", "markdown"),
-  all_precode = FALSE,
-  position = c("top", "right"),
-  color = "navyblue",
-  tooltip_message = "copiar código",
-  tooltip_success = "copiado!"
-)
+<!-- ```{r klippy} -->
+<!-- # Insert copy to clipboard buttons in HTML documents -->
+<!-- # remotes::install_github("rlesur/klippy") -->
+<!-- klippy::klippy( -->
+<!--   lang = c("r", "markdown"), -->
+<!--   all_precode = FALSE, -->
+<!--   position = c("top", "right"), -->
+<!--   color = "navyblue", -->
+<!--   tooltip_message = "copiar código", -->
+<!--   tooltip_success = "copiado!" -->
+<!-- ) -->
 
-```
+<!-- ``` -->
 
 
 ```{css echo=FALSE}
@@ -215,32 +215,35 @@ Fourth Edition. Springer.
 - Não está prevista atividade assíncrona para esta aula.
 
 
-| Atividades |             Tipo de atividades            |                                            Links                                           |
-|:----------:|:-----------------------------------------:|:------------------------------------------------------------------------------------------:|
+| Atividades |             Tipo de atividades            |        Links                          |
+|:----------:|:-----------------------------------------:|:---------------------------------------:|
 |  Síncrona  | Atividades síncronas a respeito da Aula 1 - Parte 1 | [link](Aula1/AED.html) |
 |  Síncrona  | Atividades síncronas a respeito da Aula 1 - Parte 2 |  [link](Aula1/AED2.html)  |
 |  Síncrona  | Banco de dados **daisy2.xlsx**                       | [link](https://drive.google.com/file/d/1nwylCqb4_gFkch4sPBYHIajlCoQ0VQAz/view?usp=sharing) |
 |  Síncrona  | Link para a sala de videoconferência **dia 05/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/vby-kyko-duu)  |
 
 
-<!-- ## **Aula 2:** Modelo de regressão simples. -->
+# **Aula 2:** Modelo de regressão simples. 
 
 
 
-<!-- | Atividades |                Tipo de Atividade                            | Links| -->
-<!-- | :---------: | ---------------------------------------------------------- | :---: | -->
-<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 1  |  [link]()  | -->
-<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 1 |  [link](Aula2/Aula2_parte1.html)  | -->
-<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 2 | [link]()   | -->
-<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 2 | [link](Aula2/Aula2_parte2.html)   | -->
-<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 3 |  [link]()  | -->
-<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 3 |  [link](Aula2/Aula2_parte3.html)  | -->
-<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 4  |  [link]()  | -->
-<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 4 |  [link](Aula2/Aula2_parte4.html)  | -->
-<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 5 | [link]()   | -->
-<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 5 | [link](Aula2/Aula2_parte5.html)   | -->
-<!-- | Assíncrona | Videoaula sobre a Aula 2 - Parte 6 |  [link]()  | -->
-<!-- | Assíncrona | Slides sobre a Aula 2 - Parte 6 |  [link](Aula2/Aula2_parte6.html)  | -->
+| Atividades |                Tipo de Atividade                            | Links| 
+| :---------: | ---------------------------------------------------------- | :---: | 
+| Assíncrona | Videoaula sobre a Aula 2 - Parte 1  |  [link](https://drive.google.com/file/d/1ZKNZWS1sWYuDCq4P4gSjBHFd9o--KpP0/view?usp=sharing)  |
+| Assíncrona | Slides sobre a Aula 2 - Parte 1 |  [link](https://drive.google.com/file/d/1emcpP-hw132JDIwozLHCDANqBO85oYhN/view?usp=sharing)  | 
+| Assíncrona | Videoaula sobre a Aula 2 - Parte 2 | [link](https://drive.google.com/file/d/1r8MlqzsnHysnyskQwUDfSqOpzII2dqW1/view?usp=sharing)   | 
+| Assíncrona | Slides sobre a Aula 2 - Parte 2 | [link](https://drive.google.com/file/d/1bNLCzcYpJHbNHZ1Kyd7cblwII2JC8omr/view?usp=sharing)   | 
+| Assíncrona | Videoaula sobre a Aula 2 - Parte 3 |  [link](https://drive.google.com/file/d/1zJdpwNU9Rnbtx2kyIIlNdYSiwTrVfnNh/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 2 - Parte 3 |  [link](https://drive.google.com/file/d/1ku45w7TFQbn0S1OKWoieGGzwPJHx1goF/view?usp=sharing)  | 
+| Assíncrona | Videoaula sobre a Aula 2 - Parte 4  |  [link](https://drive.google.com/file/d/1tf1jT6HWvQ1c1DMDg0HZ3Ny0976SuYtu/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 2 - Parte 4 |  [link](https://drive.google.com/file/d/18YO8pwxqgNL2zB40j3c4gJN_tZrp3-ZI/view?usp=sharing)  | 
+| Assíncrona | Videoaula sobre a Aula 2 - Parte 5 | [link](https://drive.google.com/file/d/1CrjzbBZLWyXcJnY1crTr9Vq4iqJ5MT7w/view?usp=sharing)   | 
+| Assíncrona | Slides sobre a Aula 2 - Parte 5 | [link](https://drive.google.com/file/d/1hNcmaNyujLilJFEwtw3ZWSVmRIuEzY7j/view?usp=sharing)   | 
+| Assíncrona | Videoaula sobre a Aula 2 - Parte 6 |  [link](https://drive.google.com/file/d/1zrJ40e0A0GIHGDlhUDp-ZKAVTQ9kSx9N/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 2 - Parte 6 |  [link](https://drive.google.com/file/d/1rG-seo9PI9rM_VG_1zkMZ6Fx-JD8f-_D/view?usp=sharing)  | 
+|  Síncrona  | Link para a sala de videoconferência **dia 12/11/2021 (sexta-feira) às 9hs**  |  [Em breve]()  |
+|  Síncrona  | Link para a sala de videoconferência  **dia 12/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)  |
+
 
 
 <!-- ## **Aula 3:** Apresentação dos dados em tabelas e gráficos -->
