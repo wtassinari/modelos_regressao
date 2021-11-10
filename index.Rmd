@@ -241,7 +241,7 @@ Fourth Edition. Springer.
 | Assíncrona | Slides sobre a Aula 2 - Parte 5 | [link](https://drive.google.com/file/d/1hNcmaNyujLilJFEwtw3ZWSVmRIuEzY7j/view?usp=sharing)   | 
 | Assíncrona | Videoaula sobre a Aula 2 - Parte 6 |  [link](https://drive.google.com/file/d/1zrJ40e0A0GIHGDlhUDp-ZKAVTQ9kSx9N/view?usp=sharing)  | 
 | Assíncrona | Slides sobre a Aula 2 - Parte 6 |  [link](https://drive.google.com/file/d/1rG-seo9PI9rM_VG_1zkMZ6Fx-JD8f-_D/view?usp=sharing)  | 
-|  Síncrona  | Link para a sala de videoconferência **dia 12/11/2021 (sexta-feira) às 9hs**  |  [Em breve]()  |
+|  Síncrona  | Link para a sala de videoconferência **dia 12/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/eam-jwmk-phi)  |
 |  Síncrona  | Link para a sala de videoconferência  **dia 12/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)  |
 
 
