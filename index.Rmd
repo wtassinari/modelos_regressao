@@ -223,7 +223,7 @@ Fourth Edition. Springer.
 |  Síncrona  | Link para a sala de videoconferência **dia 05/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/vby-kyko-duu)  |
 
 
-# **Aula 2:** Modelo de regressão simples. 
+# **Aula 2: Modelo de Regressão Linear Simples**
 
 
 
@@ -241,13 +241,33 @@ Fourth Edition. Springer.
 | Assíncrona | Slides sobre a Aula 2 - Parte 5 | [link](https://drive.google.com/file/d/1hNcmaNyujLilJFEwtw3ZWSVmRIuEzY7j/view?usp=sharing)   | 
 | Assíncrona | Videoaula sobre a Aula 2 - Parte 6 |  [link](https://drive.google.com/file/d/1zrJ40e0A0GIHGDlhUDp-ZKAVTQ9kSx9N/view?usp=sharing)  | 
 | Assíncrona | Slides sobre a Aula 2 - Parte 6 |  [link](https://drive.google.com/file/d/1rG-seo9PI9rM_VG_1zkMZ6Fx-JD8f-_D/view?usp=sharing)  | 
-|  Síncrona  | Atividades síncronas a respeito da Aula 2 | [link](Aula2/MRLS.html) |
+| Assíncrona | Lista de exercícios sobre a Aula 2 |  [link](https://drive.google.com/file/d/1eSeeZUeM2rWxdSPxhyRiBxNQId9VmP4I/view?usp=sharing)  |
 |  Síncrona  | Link para a sala de videoconferência **dia 12/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/eam-jwmk-phi)  |
 |  Síncrona  | Link para a sala de videoconferência  **dia 12/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)  |
 
 
 
-<!-- ## **Aula 3:** Apresentação dos dados em tabelas e gráficos -->
+# **Aula 3: Modelo de Regressão Linear Múltipla**
+
+
+
+| Atividades |                Tipo de Atividade                            | Links| 
+| :---------: | ---------------------------------------------------------- | :---: | 
+| Assíncrona | Videoaula sobre a Aula 3 - Parte 1  |  [link](https://drive.google.com/file/d/1O3xua2wpSKiLwCrS9bBrebrBE2CvCTz8/view?usp=sharing)  |
+| Assíncrona | Slides sobre a Aula 3 - Parte 1 |  [link](https://drive.google.com/file/d/1L2n-NbcRr5nU2K1AO77QOUsoFNDhosmW/view?usp=sharing)  | 
+| Assíncrona | Videoaula sobre a Aula 3 - Parte 2 | [link](https://drive.google.com/file/d/1_y1vM5ycVCilRyPUC95i5gxTaFIPtgd8/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 3 - Parte 2 | [link](https://drive.google.com/file/d/1Ubp3WKtt2dW6ekDALRF3D7TTKqISMWGc/view?usp=sharing)   | 
+| Assíncrona | Videoaula sobre a Aula 3 - Parte 3 |  [link](https://drive.google.com/file/d/1dLlmBrYpmQoD6tQ_v97tB3WTbFYcj_hr/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 3 - Parte 3 |  [link](https://drive.google.com/file/d/1tevhX14zFfO-5XRA4OLJg8-fD1Cf0OyX/view?usp=sharing)  | 
+| Assíncrona | Videoaula sobre a Aula 3 - Parte 4  |  [link](https://drive.google.com/file/d/1GVbxf_I5uooByeyNYoH5aI8SSbFkFHDW/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 3 - Parte 4 |  [link](https://drive.google.com/file/d/1jh_A3OoDc-tX5JJ599YAijq-TQOKi0K5/view?usp=sharing)  | 
+| Assíncrona | Videoaula sobre a Aula 3 - Parte 5 | [link](https://drive.google.com/file/d/1gbA3Mq8tMuAvgVzMpGOXp2XVISqeqldU/view?usp=sharing)   | 
+| Assíncrona | Slides sobre a Aula 3 - Parte 5 | [link](https://drive.google.com/file/d/1hB_rc5cvw7bpdC6P-qYljrhZu3-eslPz/view?usp=sharing)   | 
+| Assíncrona | Banco de dados **pig_adg.xlsx**  | [link](https://drive.google.com/file/d/1t2pg-0SChcSqtr1eGRDXLkw0VsX_BsXm/view?usp=sharing) |
+| Assíncrona | Lista de exercícios sobre a Aula 2 |  [Em breve !]()  |
+|  Síncrona  | Link para a sala de videoconferência **dia 19/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/vby-kyko-duu)  |
+|  Síncrona  | Link para a sala de videoconferência  **dia 19/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)  |
+
 
 
 
