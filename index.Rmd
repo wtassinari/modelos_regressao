@@ -242,6 +242,7 @@ Fourth Edition. Springer.
 | Assíncrona | Videoaula sobre a Aula 2 - Parte 6 |  [link](https://drive.google.com/file/d/1zrJ40e0A0GIHGDlhUDp-ZKAVTQ9kSx9N/view?usp=sharing)  | 
 | Assíncrona | Slides sobre a Aula 2 - Parte 6 |  [link](https://drive.google.com/file/d/1rG-seo9PI9rM_VG_1zkMZ6Fx-JD8f-_D/view?usp=sharing)  | 
 | Assíncrona | Lista de exercícios sobre a Aula 2 |  [link](https://drive.google.com/file/d/1eSeeZUeM2rWxdSPxhyRiBxNQId9VmP4I/view?usp=sharing)  |
+| Assíncrona | Gabarito da lista de exercícios sobre a Aula 2 |  [link](Aula2/Lista_1_Resolucao.html)  |
 |  Síncrona  | Atividades síncronas a respeito da Aula 2 | [link](Aula2/MRLS.html) |
 |  Síncrona  | Link para a sala de videoconferência **dia 12/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/eam-jwmk-phi)  |
 |  Síncrona  | Link para a sala de videoconferência  **dia 12/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)  |
@@ -265,7 +266,9 @@ Fourth Edition. Springer.
 | Assíncrona | Videoaula sobre a Aula 3 - Parte 5 | [link](https://drive.google.com/file/d/1gbA3Mq8tMuAvgVzMpGOXp2XVISqeqldU/view?usp=sharing)   | 
 | Assíncrona | Slides sobre a Aula 3 - Parte 5 | [link](https://drive.google.com/file/d/1hB_rc5cvw7bpdC6P-qYljrhZu3-eslPz/view?usp=sharing)   | 
 | Assíncrona | Banco de dados **pig_adg.xlsx**  | [link](https://drive.google.com/file/d/1t2pg-0SChcSqtr1eGRDXLkw0VsX_BsXm/view?usp=sharing) |
-| Assíncrona | Lista de exercícios sobre a Aula 2 |  [Em breve !]()  |
+| Assíncrona | Lista de exercícios sobre a Aula 3 |  [link](https://drive.google.com/file/d/1xLTjUyQbo6nOkP07eBei1tG8R-1-HNQQ/view?usp=sharing)  |
+| Assíncrona | Gabarito da lista de exercícios sobre a Aula 3 |  [Em breve !]()  |
+|  Síncrona  | Atividades síncronas a respeito da Aula 3 | [link](Aula3/MRLM_sincrona.html) |
 |  Síncrona  | Link para a sala de videoconferência **dia 19/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/vby-kyko-duu)  |
 |  Síncrona  | Link para a sala de videoconferência  **dia 19/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)  |
 
