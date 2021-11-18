@@ -272,7 +272,26 @@ Fourth Edition. Springer.
 |  Síncrona  | Link para a sala de videoconferência **dia 19/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/vby-kyko-duu)  |
 |  Síncrona  | Link para a sala de videoconferência  **dia 19/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)  |
 
+# **Aula 4: Modelo de Regressão Logística**
 
+
+
+| Atividades |                Tipo de Atividade                            | Links| 
+| :---------: | ---------------------------------------------------------- | :---: | 
+| Assíncrona | Videoaula sobre a Aula 4 - Parte 1  |  [link](https://drive.google.com/file/d/1YqG_0TzT7KC2PkT_B3llPMBB2hW46Uiv/view?usp=sharing)  |
+| Assíncrona | Slides sobre a Aula 4 - Parte 1 |  [link](https://drive.google.com/file/d/1cMvygUpCKBVVHHp9H9kN69EZNCb7_jBe/view?usp=sharing)  | 
+| Assíncrona | Videoaula sobre a Aula 4 - Parte 2 | [link](https://drive.google.com/file/d/1YtKmuSVTwND9O_H0livy8iYNtKrbk1Md/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 4 - Parte 2 | [link](https://drive.google.com/file/d/1cb9K7j2T8qWnIjE6i1dqpocr76l8RPDY/view?usp=sharing)   | 
+| Assíncrona | Videoaula sobre a Aula 4 - Parte 3 |  [link](https://drive.google.com/file/d/1YvetsyJ2wO9b5P6ABmsKPCmwhVq8xXFO/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 4 - Parte 3 |  [link](https://drive.google.com/file/d/1ccqM12du3ZxQRaASSkIHavBjXndzvZYL/view?usp=sharing)  | 
+| Assíncrona | Videoaula sobre a Aula 4 - Parte 4  |  [link](https://drive.google.com/file/d/1YvoQFys01sTtEWMk1jqCQyuK7sZWVD_A/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 4 - Parte 4 |  [link](https://drive.google.com/file/d/1clg3IUg2nLBNABE_CBQd2nqIcLqRMwU_/view?usp=sharing)  | 
+| Assíncrona | Banco de dados **nocardia.csv**  | [link](https://drive.google.com/file/d/1_ArjDcELr-rPmlBuP5oIEraT7lmG0uaB/view?usp=sharing) |
+| Assíncrona | Lista de exercícios sobre a Aula 4 |  [Em breve !]()  |
+| Assíncrona | Gabarito da lista de exercícios sobre a Aula 4 |  [Em breve !]()  |
+|  Síncrona  | Atividades síncronas a respeito da Aula 3 | [Em breve !]() |
+|  Síncrona  | Link para a sala de videoconferência **dia 26/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/eam-jwmk-phi)  |
+|  Síncrona  | Link para a sala de videoconferência  **dia 26/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)
 
 
 # Orientações para os Seminários
