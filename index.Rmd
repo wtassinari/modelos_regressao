@@ -267,7 +267,7 @@ Fourth Edition. Springer.
 | Assíncrona | Slides sobre a Aula 3 - Parte 5 | [link](https://drive.google.com/file/d/1hB_rc5cvw7bpdC6P-qYljrhZu3-eslPz/view?usp=sharing)   | 
 | Assíncrona | Banco de dados **pig_adg.xlsx**  | [link](https://drive.google.com/file/d/1t2pg-0SChcSqtr1eGRDXLkw0VsX_BsXm/view?usp=sharing) |
 | Assíncrona | Lista de exercícios sobre a Aula 3 |  [link](https://drive.google.com/file/d/1xLTjUyQbo6nOkP07eBei1tG8R-1-HNQQ/view?usp=sharing)  |
-| Assíncrona | Gabarito da lista de exercícios sobre a Aula 3 |  [link](Aula2/Lista_2_Resolucao.html)  |
+| Assíncrona | Gabarito da lista de exercícios sobre a Aula 3 |  [link](Aula3/Lista_2_Resolucao.html)  |
 |  Síncrona  | Atividades síncronas a respeito da Aula 3 | [link](Aula3/MRLM_sincrona.html) |
 |  Síncrona  | Link para a sala de videoconferência **dia 19/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/vby-kyko-duu)  |
 |  Síncrona  | Link para a sala de videoconferência  **dia 19/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)  |
