@@ -298,16 +298,16 @@ Fourth Edition. Springer.
 
 | Atividades |                Tipo de Atividade                            | Links| 
 | :---------: | ---------------------------------------------------------- | :---: | 
-| Assíncrona | Videoaula sobre a Aula 5 - Parte 1  |  [link]()  |
-| Assíncrona | Slides sobre a Aula 5 - Parte 1 |  [link]()  | 
-| Assíncrona | Videoaula sobre a Aula 5 - Parte 2 | [link]()  | 
-| Assíncrona | Slides sobre a Aula 5 - Parte 2 | [link]()   | 
-| Assíncrona | Videoaula sobre a Aula 5 - Parte 3 |  [link]()  | 
-| Assíncrona | Slides sobre a Aula 5 - Parte 3 |  [link]()  | 
-| Assíncrona | Videoaula sobre a Aula 5 - Parte 4  |  [link]()  | 
-| Assíncrona | Slides sobre a Aula 5 - Parte 4 |  [link]()  | 
-| Assíncrona | Banco de dados **fec.xlsx**  | [link]() |
-| Assíncrona | Lista de exercícios sobre a Aula 4 |  [Em breve !]()  |
+| Assíncrona | Videoaula sobre a Aula 5 - Parte 1  |  [link](https://drive.google.com/file/d/1HBHJmoMNMONUADf8mTjLqQGTZLtjOZnG/view?usp=sharing)  |
+| Assíncrona | Slides sobre a Aula 5 - Parte 1 |  [link](https://drive.google.com/file/d/1HJJ2jiBAKRfDSAHGSiho0QfQinJA7_3K/view?usp=sharing)  | 
+| Assíncrona | Videoaula sobre a Aula 5 - Parte 2 | [link](https://drive.google.com/file/d/1r0c_1KV-nwlzYsDi8epgo26NzrnYOE4l/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 5 - Parte 2 | [link](https://drive.google.com/file/d/12MdvM_nKUeUHcON1T4vW8cJVuLxE0Mru/view?usp=sharing)   | 
+| Assíncrona | Videoaula sobre a Aula 5 - Parte 3 |  [link](https://drive.google.com/file/d/1VtU438xSAKnUUve_wVMNHvT31ra-FioQ/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 5 - Parte 3 |  [link](https://drive.google.com/file/d/1eLrl7ZR7OnjBj4JoZpryl98ujI03UK-i/view?usp=sharing)  | 
+| Assíncrona | Videoaula sobre a Aula 5 - Parte 4  |  [link](https://drive.google.com/file/d/1KuzSRgNKZ4scjRv0kf6I0YqNTYfiPqP7/view?usp=sharing)  | 
+| Assíncrona | Slides sobre a Aula 5 - Parte 4 |  [link](https://drive.google.com/file/d/1KRwzC9zn-AFUtxfHA51mENSFpiMUp0pR/view?usp=sharing)  | 
+| Assíncrona | Banco de dados **fec.xlsx**  | [link](https://drive.google.com/file/d/1lC3yTEIfSS3O5gyYBQ38GYMZjMcUKaRu/view?usp=sharing) |
+| Assíncrona | Lista de exercícios sobre a Aula 5 |  [link](https://drive.google.com/file/d/1HkBFk_DujfLIl6lyOqD1pfZPVL88qrJz/view?usp=sharing)  |
 | Assíncrona | Gabarito da lista de exercícios sobre a Aula 5 |  [Em breve !]()  |
 |  Síncrona  | Atividades síncronas a respeito da Aula 5 | [Em breve !]() |
 |  Síncrona  | Link para a sala de videoconferência **dia 03/12/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/vby-kyko-duu)  |
