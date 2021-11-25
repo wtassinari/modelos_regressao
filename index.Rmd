@@ -275,7 +275,6 @@ Fourth Edition. Springer.
 # **Aula 4: Modelo de Regressão Logística**
 
 
-
 | Atividades |                Tipo de Atividade                            | Links| 
 | :---------: | ---------------------------------------------------------- | :---: | 
 | Assíncrona | Videoaula sobre a Aula 4 - Parte 1  |  [link](https://drive.google.com/file/d/1YqG_0TzT7KC2PkT_B3llPMBB2hW46Uiv/view?usp=sharing)  |
@@ -289,9 +288,30 @@ Fourth Edition. Springer.
 | Assíncrona | Banco de dados **nocardia.csv**  | [link](https://drive.google.com/file/d/1_ArjDcELr-rPmlBuP5oIEraT7lmG0uaB/view?usp=sharing) |
 | Assíncrona | Lista de exercícios sobre a Aula 4 |  [Em breve !]()  |
 | Assíncrona | Gabarito da lista de exercícios sobre a Aula 4 |  [Em breve !]()  |
-|  Síncrona  | Atividades síncronas a respeito da Aula 3 | [Em breve !]() |
-|  Síncrona  | Link para a sala de videoconferência **dia 26/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/eam-jwmk-phi)  |
+|  Síncrona  | Atividades síncronas a respeito da Aula 4 | [link](Aula4/MRLOG.html) |
+|  Síncrona  | Link para a sala de videoconferência **dia 26/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/jzj-eopj-sux)  |
 |  Síncrona  | Link para a sala de videoconferência  **dia 26/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)
+
+
+# **Aula 5: Modelo de Regressão de Poisson**
+
+
+| Atividades |                Tipo de Atividade                            | Links| 
+| :---------: | ---------------------------------------------------------- | :---: | 
+| Assíncrona | Videoaula sobre a Aula 5 - Parte 1  |  [link]()  |
+| Assíncrona | Slides sobre a Aula 5 - Parte 1 |  [link]()  | 
+| Assíncrona | Videoaula sobre a Aula 5 - Parte 2 | [link]()  | 
+| Assíncrona | Slides sobre a Aula 5 - Parte 2 | [link]()   | 
+| Assíncrona | Videoaula sobre a Aula 5 - Parte 3 |  [link]()  | 
+| Assíncrona | Slides sobre a Aula 5 - Parte 3 |  [link]()  | 
+| Assíncrona | Videoaula sobre a Aula 5 - Parte 4  |  [link]()  | 
+| Assíncrona | Slides sobre a Aula 5 - Parte 4 |  [link]()  | 
+| Assíncrona | Banco de dados **fec.xlsx**  | [link]() |
+| Assíncrona | Lista de exercícios sobre a Aula 4 |  [Em breve !]()  |
+| Assíncrona | Gabarito da lista de exercícios sobre a Aula 5 |  [Em breve !]()  |
+|  Síncrona  | Atividades síncronas a respeito da Aula 5 | [Em breve !]() |
+|  Síncrona  | Link para a sala de videoconferência **dia 03/12/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/vby-kyko-duu)  |
+|  Síncrona  | Link para a sala de videoconferência  **dia 03/12/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)
 
 
 # Orientações para os Seminários
