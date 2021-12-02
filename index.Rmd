@@ -309,7 +309,7 @@ Fourth Edition. Springer.
 | Assíncrona | Banco de dados **fec.xlsx**  | [link](https://drive.google.com/file/d/1lC3yTEIfSS3O5gyYBQ38GYMZjMcUKaRu/view?usp=sharing) |
 | Assíncrona | Lista de exercícios sobre a Aula 5 |  [link](https://drive.google.com/file/d/1HkBFk_DujfLIl6lyOqD1pfZPVL88qrJz/view?usp=sharing)  |
 | Assíncrona | Gabarito da lista de exercícios sobre a Aula 5 |  [Em breve !]()  |
-|  Síncrona  | Atividades síncronas a respeito da Aula 5 | [Em breve !]() |
+|  Síncrona  | Atividades síncronas a respeito da Aula 5 | [link](Aula5/Poisson_sincrona.html) |
 |  Síncrona  | Link para a sala de videoconferência **dia 03/12/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/vby-kyko-duu)  |
 |  Síncrona  | Link para a sala de videoconferência  **dia 03/12/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)
 
