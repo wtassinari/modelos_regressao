@@ -287,7 +287,7 @@ Fourth Edition. Springer.
 | Assíncrona | Slides sobre a Aula 4 - Parte 4 |  [link](https://drive.google.com/file/d/1clg3IUg2nLBNABE_CBQd2nqIcLqRMwU_/view?usp=sharing)  | 
 | Assíncrona | Banco de dados **nocardia.csv**  | [link](https://drive.google.com/file/d/1_ArjDcELr-rPmlBuP5oIEraT7lmG0uaB/view?usp=sharing) |
 | Assíncrona | Lista de exercícios sobre a Aula 4 |  [link](https://drive.google.com/file/d/1ntMb1XGFGRNM2Ss6EbBwFRD5q_QBc00k/view?usp=sharing)  |
-| Assíncrona | Gabarito da lista de exercícios sobre a Aula 4 |  [Em breve !]()  |
+| Assíncrona | Gabarito da lista de exercícios sobre a Aula 4 |  [link](Aula4/Lista_3_Resolucao.html)  |
 |  Síncrona  | Atividades síncronas a respeito da Aula 4 | [link](Aula4/MRLOG.html) |
 |  Síncrona  | Link para a sala de videoconferência **dia 26/11/2021 (sexta-feira) às 9hs**  |  [link](https://meet.google.com/jzj-eopj-sux)  |
 |  Síncrona  | Link para a sala de videoconferência  **dia 26/11/2021 (sexta-feira) às 14hs** `r colFmt(" **(Monitoria)** ",'blue')`  |  [link](https://meet.google.com/vby-kyko-duu)
